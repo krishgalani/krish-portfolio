@@ -1,121 +1,511 @@
+/* ===================================
+   CSS Custom Properties (Design Tokens)
+   =================================== */
+:root {
+  /* Colors */
+  --color-text: #1a1a2e;
+  --color-text-muted: #6b7280;
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-border: #e5e7eb;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  
+  /* Typography */
+  --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'Lucida Console', 'Consolas', monospace;
+  --font-family-pixel: 'Dogica Pixel', 'Dogica', monospace;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 var(--color-shadow);
+  --shadow-md: 0 4px 6px -1px var(--color-shadow), 0 2px 4px -2px var(--color-shadow);
+  --shadow-lg: 0 10px 15px -3px var(--color-shadow), 0 4px 6px -4px var(--color-shadow);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  
+  /* Layout */
+  --max-width: 80vw;
+  --content-padding: var(--space-lg);
+}
+
+/* ===================================
+   Font Face Declarations
+   =================================== */
 @font-face {
   font-family: 'Dogica';
   src: url('resources/Dogica.eot');
-  src: url('resources/Dogica.eot?#iefix') format('embedded-opentype'),
-      url('resources/Dogica.woff2') format('woff2'),
-      url('resources/Dogica.woff') format('woff'),
-      url('resources/Dogica.ttf') format('truetype'),
-      url('resources/Dogica.svg#Dogica') format('svg');
+  src: 
+    url('resources/Dogica.eot?#iefix') format('embedded-opentype'),
+    url('resources/Dogica.woff2') format('woff2'),
+    url('resources/Dogica.woff') format('woff'),
+    url('resources/Dogica.ttf') format('truetype'),
+    url('resources/Dogica.svg#Dogica') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Dogica Pixel';
   src: url('resources/Dogica_Pixel_Bold.eot');
-  src: url('resorces/Dogica_Pixel_Bold.eot?#iefix') format('embedded-opentype'),
-      url('resources/Dogica_Pixel_Bold.woff2') format('woff2'),
-      url('resources/Dogica_Pixel_Bold.woff') format('woff'),
-      url('resources/Dogica_Pixel_Bold.ttf') format('truetype'),
-      url('resources/Dogica_Pixel_Bold.svg#Dogica_Pixel_Bold') format('svg');
+  src: 
+    url('resources/Dogica_Pixel_Bold.eot?#iefix') format('embedded-opentype'),
+    url('resources/Dogica_Pixel_Bold.woff2') format('woff2'),
+    url('resources/Dogica_Pixel_Bold.woff') format('woff'),
+    url('resources/Dogica_Pixel_Bold.ttf') format('truetype'),
+    url('resources/Dogica_Pixel_Bold.svg#Dogica_Pixel_Bold') format('svg');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
-#name {
-  font-family: 'Dogica Pixel';
-  font-size: 60px;
-  font-weight: normal;
-  font-style: bold;
-}
-body {
-  font-family:'Lucida Console', monospace;
-  font-size: 18px;
-  color: #111;
-  background-color: white;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 50px;
+
+/* ===================================
+   Base Reset & Defaults
+   =================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-.landing {
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-mono);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===================================
+   Page Layout
+   =================================== */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height:100vh; min-height:100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   text-align: center;
+  padding: var(--space-2xl) 0;
 }
-svg { width: 100%; height: auto; }
-.svg-container { width: 100%; max-width: 400px; display: inline-block; }
-.separator { letter-spacing: -9px; }
-hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
-table { border-collapse: collapse; text-align: center; width: 100%; }
-td {
-  padding: 5px 20px;
-  border: 1px solid #dddddd;
-}
-.quiet, .links-container a { color: inherit; }
-.links-container { font-size: 24px; margin: 20px; }
-.links-container a { text-decoration: none; margin: 0 10px; }
-.product-photo { display: block; max-width: 640px; width: 100%; margin: 0 auto; }
-.faqtable dt { margin-bottom: 0.75em; font-style: italic; }
-.faqtable dd { margin-left: 0; margin-bottom: 2em; }
 
-.projects-container {
+.hero__title {
+  font-family: var(--font-family-pixel);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: normal;
+  margin: 0 0 var(--space-xl);
+  letter-spacing: -0.02em;
+}
+
+.hero__nav {
+  margin-top: var(--space-lg);
+}
+
+.hero__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center the items horizontally */
-  gap: 20px; /* Space between the cards */
+  justify-content: center;
+  gap: var(--space-md);
 }
 
-.repo-card {
-  width: 300px;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  text-align: center;
-  display: flex;
-  flex-direction: column; /* So that content flows vertically */
+.hero__link {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: 
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
-.avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: 0 auto 15px auto;
-}
-
-.repo-info h2 {
-  font-size: 1.4em;
-  margin: 0;
-}
-
-.repo-info p {
-  font-size: 0.9em;
-  color: #666;
-}
-
-.repo-stats {
-  margin-top: 10px;
-  font-size: 0.9em;
-}
-
-.repo-stats span {
-  display: block;
-  margin: 5px 0;
-}
-
-.repo-link {
-  margin-top: auto; /* Pushes the link to the bottom of the card */
-  padding: 10px 15px;
-  background-color: #007bff;
+.hero__link:hover {
+  background-color: var(--color-primary);
   color: white;
-  text-decoration: none;
-  border-radius: 4px;
 }
 
-.repo-link:hover {
-  background-color: #0056b3;
+/* ===================================
+   Section (Generic)
+   =================================== */
+.section {
+  padding: var(--space-3xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.section__title {
+  font-family: var(--font-family-base);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text);
+}
+
+.section__text {
+  margin: 0;
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+.section__link {
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.section__link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* ===================================
+   Projects Grid
+   =================================== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ===================================
+   Project Card
+   =================================== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  transition: 
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  margin: 0 auto var(--space-lg);
+  object-fit: contain;
+  background-color: var(--color-background);
+  padding: var(--space-xs);
+}
+
+.project-card__title {
+  font-family: var(--font-family-base);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+  text-align: center;
+}
+
+.project-card__description {
+  flex-grow: 1;
+  margin: 0 0 var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.project-card__link {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.project-card__link:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ===================================
+   Websites Toggle Buttons
+   =================================== */
+.websites-toggle {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-xs);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  width: fit-content;
+}
+
+.websites-toggle__btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-family-base);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: 
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+
+.websites-toggle__btn:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.websites-toggle__btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.websites-toggle__btn--active {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.websites-toggle__btn--active:hover {
+  background-color: var(--color-primary-hover);
+  color: white;
+}
+
+/* ===================================
+   Websites Grid Container
+   =================================== */
+.websites-grid-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.websites-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 440px));
+  gap: var(--space-xl);
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.websites-grid--active {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================
+   Websites (Legacy - for backwards compatibility)
+   =================================== */
+.websites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 440px));
+  gap: var(--space-xl);
+  justify-content: center;
+}
+
+/* ===================================
+   Website Card (Netflix-Style Layout)
+   =================================== */
+.website-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  max-width: 440px;
+  transition: 
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.website-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.website-card__link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.website-card__preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-background);
+}
+
+.website-card__thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.website-card:hover .website-card__thumbnail {
+  transform: scale(1.05);
+}
+
+.website-card__content {
+  padding: var(--space-sm) var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.website-card__tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 2px 6px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.website-card__title {
+  font-family: var(--font-family-base);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.website-card__domain {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.website-card__description {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===================================
+   Website Card (Legacy Header - for backwards compatibility)
+   =================================== */
+.website-card__header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ===================================
+   Responsive Adjustments
+   =================================== */
+@media (max-width: 600px) {
+  :root {
+    --content-padding: var(--space-md);
+  }
+  
+  .hero__title {
+    font-size: 2rem;
+  }
+  
+  .hero__link {
+    font-size: 1rem;
+  }
+  
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Toggle buttons stack vertically on mobile */
+  .websites-toggle {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .websites-toggle__btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .websites-grid {
+    grid-template-columns: 1fr;
+  }
 }
