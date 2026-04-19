@@ -188,7 +188,7 @@ ul {
 }
 
 .section__title {
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-mono);
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 var(--space-lg);

@@ -1,7 +1,12 @@
+# Krish's ignores
 node_modules
 fetch_tinygrad.js
-package.json
-package-lock.json
 example.html
-.DS_Store
 plans
+.kilocode
+screenshots
+
+# Event Template (Next.js) - only keep the out folder
+pages/event_template/**
+!pages/event_template/out/
+!pages/event_template/out/**
