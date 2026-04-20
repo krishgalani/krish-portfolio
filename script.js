@@ -32,7 +32,7 @@
   // Set language
   function setLanguage(lang) {
     // Update HTML lang attribute
-    document.documentElement.lang = lang === 'zh' ? 'zh-HK' : 'en';
+    document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
     
     // Update toggle button
     langToggle.textContent = lang === 'en' ? 'EN/中' : '中/EN';

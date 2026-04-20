@@ -288,6 +288,18 @@ body::after {
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
 
+.hero__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-lg);
+  font-weight: 400;
+}
+
+.hero__subtitle:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(1.1rem * var(--zh-font-scale));
+}
+
 .hero__nav {
   margin-top: var(--space-xl);
 }
@@ -296,38 +308,42 @@ body::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-md);
+  gap: var(--space-sm) var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .hero__link {
   display: inline-block;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) 0;
   font-size: 1.15rem;
   font-weight: 500;
   color: var(--color-text-muted);
-  border-radius: 2px;
+  text-decoration: none;
   position: relative;
-  transition: 
-    background-color var(--transition-fast),
-    color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
-.hero__link::before {
-  content: '·';
+.hero__link::after {
+  content: '';
   position: absolute;
-  left: -0.5rem;
-  color: var(--color-primary);
-  opacity: 0;
-  transition: opacity var(--transition-fast);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-base);
 }
 
 .hero__link:hover {
-  background-color: rgba(201, 168, 108, 0.2);
   color: var(--color-primary);
 }
 
-.hero__link:hover::before {
-  opacity: 1;
+.hero__link:hover::after {
+  transform: scaleX(1);
 }
 
 /* ===================================
@@ -383,6 +399,16 @@ body::after {
 
 .section__link:hover {
   color: var(--color-primary-hover);
+}
+
+/* Contact section URLs always use mono font */
+.section__text a {
+  font-family: var(--font-family-mono);
+}
+
+/* Contact section in Chinese mode */
+#contact .section__text:lang(zh) {
+  font-family: 'KaiTi';
 }
 
 /* ===================================
@@ -647,6 +673,7 @@ body::after {
 
 .website-card__domain {
   margin: 0;
+  font-family: var(--font-family-mono);
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
@@ -719,7 +746,13 @@ body::after {
 
 @media (max-width: 480px) {
   .hero__list {
-    gap: var(--space-sm);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .hero__link {
+    font-size: 1rem;
   }
 
   /* About section: stack vertically on mobile */
