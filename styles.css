@@ -721,4 +721,20 @@ body::after {
   .hero__list {
     gap: var(--space-sm);
   }
+
+  /* About section: stack vertically on mobile */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .about-content .section__text {
+    text-align: center;
+  }
+
+  .about__logo {
+    width: 8rem;
+  }
 }
