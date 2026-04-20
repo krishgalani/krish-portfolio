@@ -10,28 +10,34 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  
   <main class="page">
     
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+      EN/中
+    </button>
+
     <!-- Hero Section -->
     <section class="hero">
-      <h1 class="hero__title">Krish Galani</h1>
+      <h1 class="hero__title" data-en="Krish Galani" data-zh="葛杰斯">Krish Galani</h1>
       
       <nav class="hero__nav">
         <ul class="hero__list">
           <li class="hero__item">
-            <a href="#about" class="hero__link">about</a>
+            <a href="#about" class="hero__link" data-en="about" data-zh="關於">about</a>
           </li>
           <li class="hero__item">
-            <a href="#projects" class="hero__link">projects</a>
+            <a href="#projects" class="hero__link" data-en="projects" data-zh="項目">projects</a>
           </li>
           <li class="hero__item">
-            <a href="#websites" class="hero__link">websites</a>
+            <a href="#websites" class="hero__link" data-en="websites" data-zh="網站">websites</a>
           </li>
           <li class="hero__item">
-            <a href="#contact" class="hero__link">contact</a>
+            <a href="#contact" class="hero__link" data-en="contact" data-zh="聯絡">contact</a>
           </li>
           <li class="hero__item">
-            <a href="resources/Krish_Galani___CV.pdf" class="hero__link" target="_blank" rel="noopener">cv</a>
+            <a href="resources/Krish_Galani___CV.pdf" class="hero__link" target="_blank" rel="noopener" data-en="cv" data-zh="履歷">cv</a>
           </li>
         </ul>
       </nav>
@@ -39,15 +45,18 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-      <h2 class="section__title">about</h2>
-      <p class="section__text">
-        I am a Computer Science graduate of Boston University ('24). I enjoy making websites for small businesses in Hong Kong, I make use modern coding assistants with the Next.js framework for fast and flexible deployment. I am capable of integrating third party functionality, including booking, and e-commerce features.
-      </p>
+      <h2 class="section__title" data-en="about" data-zh="關於">about</h2>
+      <div class="about-content">
+        <p class="section__text" data-en="I graduated from Boston University ('24) with a B.A. in Computer Science. I enjoy making websites for small businesses in Hong Kong, I make use modern coding AI assistants with the Next.js framework for fast and flexible deployment. I am capable of integrating third party functionality, including booking, and e-commerce features." data-zh="我是波士頓大學計算機科學學士畢業生（'24）。我熱衷於為香港小型企業製作網站，運用現代AI 編程助手配合 Next.js 框架，實現快速靈活的部署。我能整合第三方功能，包括預訂系統和電子商務功能。">
+          I graduated from Boston University ('24) with a B.A. in Computer Science. I enjoy making websites for small businesses in Hong Kong, I make use modern coding AI assistants with the Next.js framework for fast and flexible deployment. I am capable of integrating third party functionality, including booking, and e-commerce features.
+        </p>
+        <img src="resources/BU_logo.png" alt="Boston University Logo" class="about__logo">
+      </div>
     </section>
 
     <!-- Websites Section -->
     <section id="websites" class="section">
-      <h2 class="section__title">websites</h2>
+      <h2 class="section__title" data-en="websites" data-zh="網站">websites</h2>
       
       <!-- Toggle Buttons for Website Categories -->
       <div class="websites-toggle" role="tablist" aria-label="Website categories">
@@ -58,6 +67,8 @@
           aria-selected="true"
           aria-controls="websites-published"
           id="tab-published"
+          data-en="Client Websites"
+          data-zh="客戶網站"
         >
         Client Websites
         </button>
@@ -68,6 +79,8 @@
           aria-selected="false"
           aria-controls="websites-templates"
           id="tab-templates"
+          data-en="Website Templates"
+          data-zh="網站模板"
         >
         Website Templates
         </button>
@@ -94,10 +107,10 @@
                 >
               </div>
               <div class="website-card__content">
-                <span class="website-card__tag">Commerce</span>
-                <h3 class="website-card__title">Rising Electronics</h3>
+                <span class="website-card__tag" data-en="Commerce" data-zh="商業">Commerce</span>
+                <h3 class="website-card__title" data-en="Rising Electronics" data-zh="穗升國際有限公司">Rising Electronics</h3>
                 <p class="website-card__domain">risingelectronics.com</p>
-                <p class="website-card__description">An electronics manufacturer based in Hong Kong.</p>
+                <p class="website-card__description" data-en="An electronics manufacturer based in Hong Kong." data-zh="一家位於香港的電子產品製造商。">An electronics manufacturer based in Hong Kong.</p>
               </div>
             </a>
           </article>
@@ -112,7 +125,7 @@
           hidden
         >
             <article class="website-card" data-category="templates">
-            <a href="pages/event_template/out/index.html" class="website-card__link">
+            <a href="pages/event_template/out/index.html" class="website-card__link" target="_blank" rel="noopener">
               <div class="website-card__preview">
                 <img 
                   class="website-card__thumbnail" 
@@ -122,9 +135,60 @@
                 >
               </div>
               <div class="website-card__content">
-                <span class="website-card__tag">Events</span>
-                <h3 class="website-card__title">Event Template</h3>
-                <p class="website-card__description">A flexible template for events and occasions.</p>
+                <span class="website-card__tag" data-en="Events" data-zh="活動">Events</span>
+                <h3 class="website-card__title" data-en="Event Template" data-zh="活動模板">Event Template</h3>
+                <p class="website-card__description" data-en="A flexible template for events and occasions." data-zh="一個適用於活動和場合的靈活模板。">A flexible template for events and occasions.</p>
+              </div>
+            </a>
+          </article>
+            <article class="website-card" data-category="templates">
+            <a href="pages/dentist_template/out/index.html" class="website-card__link" target="_blank" rel="noopener">
+              <div class="website-card__preview">
+                <img 
+                  class="website-card__thumbnail" 
+                  src="resources/websites/templates/dentist_template_website_frontpage.png" 
+                  alt="Dentist Template website preview"
+                  loading="lazy"
+                >
+              </div>
+              <div class="website-card__content">
+                <span class="website-card__tag" data-en="Medical" data-zh="醫療">Medical</span>
+                <h3 class="website-card__title" data-en="Hong Kong Dental Clinic" data-zh="香港牙科診所">Hong Kong Dental Clinic</h3>
+                <p class="website-card__description" data-en="A bilingual dental clinic template for Hong Kong." data-zh="一個適合香港的雙語牙科診所模板。">A bilingual dental clinic template for Hong Kong.</p>
+              </div>
+            </a>
+          </article>
+            <article class="website-card" data-category="templates">
+            <a href="pages/gym_template/out/index.html" class="website-card__link" target="_blank" rel="noopener">
+              <div class="website-card__preview">
+                <img 
+                  class="website-card__thumbnail" 
+                  src="resources/websites/templates/gym_template_website_frontpage.png" 
+                  alt="Gym Template website preview"
+                  loading="lazy"
+                >
+              </div>
+              <div class="website-card__content">
+                <span class="website-card__tag" data-en="Fitness" data-zh="健身">Fitness</span>
+                <h3 class="website-card__title" data-en="Hong Kong Functional Fitness" data-zh="香港功能性健身">Hong Kong Functional Fitness</h3>
+                <p class="website-card__description" data-en="A bilingual gym template with EN/ZH switching." data-zh="一個帶有中英文切換的雙語健身模板。">A bilingual gym template with EN/ZH switching.</p>
+              </div>
+            </a>
+          </article>
+            <article class="website-card" data-category="templates">
+            <a href="pages/hair_salon_template/out/index.html" class="website-card__link" target="_blank" rel="noopener">
+              <div class="website-card__preview">
+                <img 
+                  class="website-card__thumbnail" 
+                  src="resources/websites/templates/hair_salon_template_website_frontpage.png" 
+                  alt="Hair Salon Template website preview"
+                  loading="lazy"
+                >
+              </div>
+              <div class="website-card__content">
+                <span class="website-card__tag" data-en="Beauty" data-zh="美容">Beauty</span>
+                <h3 class="website-card__title" data-en="Hong Kong Hair Salon" data-zh="香港髮廊時尚">Hong Kong Hair Salon</h3>
+                <p class="website-card__description" data-en="A bilingual hair salon template with EN/ZH switching." data-zh="一個帶有中英文切換的雙語髮廊模板。">A bilingual hair salon template with EN/ZH switching.</p>
               </div>
             </a>
           </article>
@@ -135,7 +199,7 @@
 
     <!-- Projects Section -->
     <section id="projects" class="section">
-      <h2 class="section__title">projects</h2>
+      <h2 class="section__title" data-en="projects" data-zh="項目">projects</h2>
       <div class="projects">
         
         <article class="project-card" data-repo="jobsdb-scraper">
@@ -179,7 +243,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section">
-      <h2 class="section__title">contact</h2>
+      <h2 class="section__title" data-en="contact" data-zh="聯絡">contact</h2>
       <p class="section__text">
         <strong>Email:</strong> 
         <a href="mailto:krishdgala@gmail.com" class="section__link">krishdgala@gmail.com</a>

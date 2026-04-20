@@ -10,3 +10,18 @@ screenshots
 pages/event_template/**
 !pages/event_template/out/
 !pages/event_template/out/**
+
+# Dentist Template (Next.js) - only keep the out folder
+pages/dentist_template/**
+!pages/dentist_template/out/
+!pages/dentist_template/out/**
+
+# Gym Template (Next.js) - only keep the out folder
+pages/gym_template/**
+!pages/gym_template/out/
+!pages/gym_template/out/**
+
+# Hair Salon Template (Next.js) - only keep the out folder
+pages/hair_salon_template/**
+!pages/hair_salon_template/out/
+!pages/hair_salon_template/out/**

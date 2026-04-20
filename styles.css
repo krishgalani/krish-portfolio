@@ -2,20 +2,24 @@
    CSS Custom Properties (Design Tokens)
    =================================== */
 :root {
-  /* Colors */
-  --color-text: #1a1a2e;
-  --color-text-muted: #6b7280;
-  --color-background: #fafafa;
-  --color-surface: #ffffff;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-border: #e5e7eb;
-  --color-shadow: rgba(0, 0, 0, 0.08);
+  /* Colors - Japanese/Anime Sword Shop Palette */
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6560;
+  --color-background: #f5f0e8;
+  --color-surface: #fffdf9;
+  --color-primary: #8b4513;
+  --color-primary-hover: #6b3410;
+  --color-accent: #c9a86c;
+  --color-border: #d4c8b8;
+  --color-shadow: rgba(139, 69, 19, 0.1);
   
   /* Typography */
   --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'Lucida Console', 'Consolas', monospace;
   --font-family-pixel: 'Dogica Pixel', 'Dogica', monospace;
+  
+  /* Chinese Font Size Scale - adjust this to increase/decrease all Chinese text size */
+  --zh-font-scale: 1.5;
   
   /* Spacing Scale */
   --space-xs: 0.25rem;
@@ -27,30 +31,43 @@
   --space-3xl: 4rem;
   
   /* Border Radius */
-  --radius-sm: 0.375rem;
+  --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
   
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 var(--color-shadow);
-  --shadow-md: 0 4px 6px -1px var(--color-shadow), 0 2px 4px -2px var(--color-shadow);
-  --shadow-lg: 0 10px 15px -3px var(--color-shadow), 0 4px 6px -4px var(--color-shadow);
+  --shadow-sm: 0 1px 3px rgba(139, 69, 19, 0.08);
+  --shadow-md: 0 4px 12px rgba(139, 69, 19, 0.12);
+  --shadow-lg: 0 8px 24px rgba(139, 69, 19, 0.15);
   
   /* Transitions */
   --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
   
   /* Layout */
-  --max-width: 80vw;
+  --max-width: 75vw;
   --content-padding: var(--space-lg);
 }
 
 /* ===================================
    Font Face Declarations
    =================================== */
+@font-face {
+  font-family: 'KaiTi';
+  src: url('resources/kaiti.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'pingfang_jianti';
+  src: url('resources/pingfang_jianti.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Dogica';
   src: url('resources/Dogica.eot');
@@ -92,6 +109,43 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===================================
+   Chinese Language Font
+   =================================== */
+:lang(zh) {
+  font-family: 'KaiTi', var(--font-family-mono);
+}
+
+.hero__link:lang(zh) {
+  font-size: calc(1.3rem * var(--zh-font-scale));
+}
+
+
+.section__text:lang(zh) {
+  font-size: calc(1.1rem * var(--zh-font-scale));
+  line-height: 2;
+}
+
+/* Project cards always use English fonts */
+.project-card,
+.project-card__title,
+.project-card__description {
+  font-family: var(--font-family-base);
+}
+
+
+/* Website cards can use Chinese fonts in Chinese mode */
+.website-card__title:lang(zh) {
+  font-size: calc(1rem * var(--zh-font-scale));
+  white-space: normal;
+  overflow: visible;
+}
+
+.website-card__description:lang(zh) {
+  font-size: calc(0.9rem * var(--zh-font-scale));
+  -webkit-line-clamp: unset;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -102,29 +156,78 @@ body {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+/* ===================================
+   Background Pattern - Elegant Texture
+   =================================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(201, 168, 108, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(201, 168, 108, 0.03) 0%, transparent 70%);
+  z-index: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Subtle pattern overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b4513' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* ===================================
+   Language Toggle Button
+   =================================== */
+.lang-toggle {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 100;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-family-pixel);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.lang-toggle:hover {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.lang-toggle:active {
+  transform: translateY(0);
 }
 
 /* ===================================
    Page Layout
    =================================== */
 .page {
+  position: relative;
+  z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--content-padding);
@@ -142,6 +245,19 @@ ul {
   min-height: 100dvh;
   text-align: center;
   padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+/* Decorative top border */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
 
 .hero__title {
@@ -149,11 +265,31 @@ ul {
   font-size: clamp(2rem, 8vw, 3.5rem);
   font-weight: normal;
   margin: 0 0 var(--space-xl);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  position: relative;
+  padding: 0 var(--space-xl);
+}
+
+.hero__title:lang(zh) {
+  font-family: 'pingfang_jianti';
+  font-size: calc(clamp(2rem, 8vw, 3.5rem) * var(--zh-font-scale));
+}
+
+/* Elegant underline */
+.hero__title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
 
 .hero__nav {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
 .hero__list {
@@ -165,18 +301,33 @@ ul {
 
 .hero__link {
   display: inline-block;
-  padding: var(--space-xs) var(--space-sm);
-  font-size: 1.25rem;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1.15rem;
   font-weight: 500;
-  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  border-radius: 2px;
+  position: relative;
   transition: 
     background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
+.hero__link::before {
+  content: '·';
+  position: absolute;
+  left: -0.5rem;
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
 .hero__link:hover {
-  background-color: var(--color-primary);
-  color: white;
+  background-color: rgba(201, 168, 108, 0.2);
+  color: var(--color-primary);
+}
+
+.hero__link:hover::before {
+  opacity: 1;
 }
 
 /* ===================================
@@ -185,30 +336,78 @@ ul {
 .section {
   padding: var(--space-3xl) 0;
   border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+/* Section decorative line */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent);
 }
 
 .section__title {
-  font-family: var(--font-family-mono);
-  font-size: 1.5rem;
+  font-family: var(--font-family-pixel);
+  font-size: 1.25rem;
   font-weight: 600;
   margin: 0 0 var(--space-lg);
-  color: var(--color-text);
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.section__title:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(1.25rem * var(--zh-font-scale));
 }
 
 .section__text {
   margin: 0;
   max-width: 65ch;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: var(--color-text);
 }
 
 .section__link {
   color: var(--color-primary);
+  font-family: var(--font-family-mono);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 3px;
   transition: color var(--transition-fast);
 }
 
+
 .section__link:hover {
   color: var(--color-primary-hover);
-  text-decoration: underline;
+}
+
+/* ===================================
+   About Section
+   =================================== */
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.about-content .section__text {
+  flex: 1;
+}
+
+.about__logo {
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* About section Chinese text styling */
+.about-content .section__text:lang(zh) {
+  font-family: 'KaiTi';
 }
 
 /* ===================================
@@ -228,7 +427,7 @@ ul {
   flex-direction: column;
   padding: var(--space-xl);
   background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   transition: 
@@ -244,7 +443,7 @@ ul {
 .project-card__icon {
   width: 56px;
   height: 56px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   margin: 0 auto var(--space-lg);
   object-fit: contain;
   background-color: var(--color-background);
@@ -253,16 +452,17 @@ ul {
 
 .project-card__title {
   font-family: var(--font-family-base);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 0 0 var(--space-sm);
   text-align: center;
+  color: var(--color-text);
 }
 
 .project-card__description {
   flex-grow: 1;
   margin: 0 0 var(--space-lg);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
   text-align: center;
   line-height: 1.5;
@@ -274,14 +474,19 @@ ul {
   background-color: var(--color-primary);
   color: white;
   font-size: 0.875rem;
+  font-family: var(--font-family-mono);
   font-weight: 500;
   text-align: center;
-  border-radius: var(--radius-md);
-  transition: background-color var(--transition-fast);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: 
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .project-card__link:hover {
   background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
 }
 
 /* ===================================
@@ -293,7 +498,7 @@ ul {
   margin-bottom: var(--space-xl);
   padding: var(--space-xs);
   background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   width: fit-content;
 }
@@ -304,7 +509,7 @@ ul {
   font-size: 0.9rem;
   font-weight: 500;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: 
     background-color var(--transition-fast),
@@ -320,19 +525,23 @@ ul {
 }
 
 .websites-toggle__btn:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 .websites-toggle__btn--active {
   background-color: var(--color-primary);
   color: white;
-  box-shadow: var(--shadow-sm);
 }
 
 .websites-toggle__btn--active:hover {
   background-color: var(--color-primary-hover);
-  color: white;
+}
+
+/* Toggle buttons in Chinese mode */
+.websites-toggle__btn:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.9rem * var(--zh-font-scale));
 }
 
 /* ===================================
@@ -345,7 +554,7 @@ ul {
 
 .websites-grid {
   display: none;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 440px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
   gap: var(--space-xl);
   justify-content: center;
   opacity: 0;
@@ -362,30 +571,21 @@ ul {
 }
 
 /* ===================================
-   Websites (Legacy - for backwards compatibility)
-   =================================== */
-.websites {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 440px));
-  gap: var(--space-xl);
-  justify-content: center;
-}
-
-/* ===================================
-   Website Card (Netflix-Style Layout)
+   Website Card
    =================================== */
 .website-card {
   background-color: var(--color-surface);
   border-radius: var(--radius-md);
   overflow: hidden;
-  max-width: 440px;
+  max-width: 420px;
+  border: 1px solid var(--color-border);
   transition: 
     transform var(--transition-base),
     box-shadow var(--transition-base);
 }
 
 .website-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
@@ -416,28 +616,27 @@ ul {
 }
 
 .website-card__content {
-  padding: var(--space-sm) var(--space-xs);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .website-card__tag {
   display: inline-block;
   align-self: flex-start;
-  padding: 2px 6px;
-  font-size: 0.6rem;
+  padding: 2px 8px;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: white;
   background-color: var(--color-primary);
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
 }
 
 .website-card__title {
-  font-family: var(--font-family-base);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 0;
   color: var(--color-text);
@@ -448,12 +647,16 @@ ul {
 
 .website-card__domain {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
+.website-card__domain:lang(zh) {
+  font-size: calc(0.75rem * var(--zh-font-scale));
+}
+
 .website-card__description {
-  margin: 0;
+  margin: 4px 0 0;
   font-size: 0.8rem;
   color: var(--color-text);
   line-height: 1.4;
@@ -463,38 +666,42 @@ ul {
   overflow: hidden;
 }
 
-/* ===================================
-   Website Card (Legacy Header - for backwards compatibility)
-   =================================== */
-.website-card__header {
-  display: flex;
-  align-items: center;
-  padding: var(--space-sm) var(--space-lg);
-  background-color: var(--color-background);
-  border-bottom: 1px solid var(--color-border);
+/* Website card tag in Chinese mode */
+.website-card__tag:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.65rem * var(--zh-font-scale));
 }
 
 /* ===================================
    Responsive Adjustments
    =================================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   :root {
+    --max-width: 90vw;
     --content-padding: var(--space-md);
   }
   
-  .hero__title {
-    font-size: 2rem;
+  .lang-toggle {
+    top: var(--space-md);
+    right: var(--space-md);
+    font-size: 0.8rem;
+    padding: var(--space-xs) var(--space-sm);
   }
   
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  
   .hero__link {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: var(--space-xs) var(--space-sm);
   }
   
   .projects {
     grid-template-columns: 1fr;
   }
   
-  /* Toggle buttons stack vertically on mobile */
   .websites-toggle {
     flex-direction: column;
     width: 100%;
@@ -507,5 +714,11 @@ ul {
   
   .websites-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__list {
+    gap: var(--space-sm);
   }
 }

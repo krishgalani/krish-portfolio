@@ -1,128 +1,137 @@
-/**
- * Websites Section Toggle Functionality
- * Handles switching between Published Websites and Website Templates
- */
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleButtons = document.querySelectorAll('.websites-toggle__btn');
-  const publishedGrid = document.getElementById('websites-published');
-  const templatesGrid = document.getElementById('websites-templates');
-  const storageKey = 'websites-selected-tab';
-
-  /**
-   * Activates a specific tab category
-   * @param {string} category - 'published' or 'templates'
-   */
-  function activateTab(category) {
-    // Update button states
-    toggleButtons.forEach((btn) => {
-      const isActive = btn.dataset.category === category;
-      btn.classList.toggle('websites-toggle__btn--active', isActive);
-      btn.setAttribute('aria-selected', isActive);
-    });
-
-    // Update grid visibility with transition
-    if (category === 'published') {
-      publishedGrid.classList.add('websites-grid--active');
-      publishedGrid.removeAttribute('hidden');
-      templatesGrid.classList.remove('websites-grid--active');
-      templatesGrid.setAttribute('hidden', '');
-    } else {
-      templatesGrid.classList.add('websites-grid--active');
-      templatesGrid.removeAttribute('hidden');
-      publishedGrid.classList.remove('websites-grid--active');
-      publishedGrid.setAttribute('hidden', '');
-    }
-
-    // Persist selection in localStorage
-    localStorage.setItem(storageKey, category);
+// ===================================
+// Language Switching
+// ===================================
+(function() {
+  const STORAGE_KEY = 'portfolio-lang';
+  
+  // Get all elements with data-en and data-zh
+  const translatableElements = document.querySelectorAll('[data-en]');
+  
+  // Language toggle button
+  const langToggle = document.getElementById('lang-toggle');
+  
+  // Current language
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  
+  // Initialize language
+  function init() {
+    // Set initial language
+    setLanguage(currentLang);
+    
+    // Add click handler
+    langToggle.addEventListener('click', toggleLanguage);
   }
-
-  // Attach click handlers to toggle buttons
-  toggleButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const category = btn.dataset.category;
-      activateTab(category);
-    });
-
-    // Keyboard navigation support
-    btn.addEventListener('keydown', (e) => {
-      const buttons = Array.from(toggleButtons);
-      const currentIndex = buttons.indexOf(btn);
-
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        const nextIndex = (currentIndex + 1) % buttons.length;
-        buttons[nextIndex].focus();
-        buttons[nextIndex].click();
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prevIndex = (currentIndex - 1 + buttons.length) % buttons.length;
-        buttons[prevIndex].focus();
-        buttons[prevIndex].click();
+  
+  // Toggle language
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    localStorage.setItem(STORAGE_KEY, currentLang);
+    setLanguage(currentLang);
+  }
+  
+  // Set language
+  function setLanguage(lang) {
+    // Update HTML lang attribute
+    document.documentElement.lang = lang === 'zh' ? 'zh-HK' : 'en';
+    
+    // Update toggle button
+    langToggle.textContent = lang === 'en' ? 'EN/中' : '中/EN';
+    langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Chinese' : '切換到英文');
+    
+    // Update all translatable elements
+    translatableElements.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) {
+        if (el.children.length === 0 && el.childNodes.length <= 1) {
+          el.textContent = text;
+        } else {
+          el.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.textContent = text;
+            }
+          });
+        }
       }
     });
-  });
-
-  // Restore last selected tab from localStorage
-  const savedTab = localStorage.getItem(storageKey);
-  if (savedTab && (savedTab === 'published' || savedTab === 'templates')) {
-    activateTab(savedTab);
-  }
-
-  // Handle reduced motion preference
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (prefersReducedMotion.matches) {
-    document.querySelectorAll('.websites-grid').forEach((grid) => {
-      grid.style.transition = 'none';
+    
+    // Update section title styling (use pixel font for both languages)
+    const sectionTitles = document.querySelectorAll('.section__title');
+    sectionTitles.forEach(title => {
+      title.style.fontFamily = 'var(--font-family-pixel)';
+      title.style.letterSpacing = '0.05em';
     });
   }
-});
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 
-/**
- * Fetches GitHub repository data and populates project cards
- */
-document.addEventListener('DOMContentLoaded', () => {
-  const projectCards = document.querySelectorAll('.project-card');
-  const username = 'krishgalani';
-
-  projectCards.forEach((card) => {
-    const repoName = card.getAttribute('data-repo');
-    const apiUrl = `https://api.github.com/repos/${username}/${repoName}`;
-
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Populate card with fetched data
-        const titleEl = card.querySelector('.project-card__title');
-        const descriptionEl = card.querySelector('.project-card__description');
-        const linkEl = card.querySelector('.project-card__link');
-
-        if (titleEl) {
-          titleEl.textContent = data.name || 'Untitled Project';
-        }
-
-        if (descriptionEl) {
-          descriptionEl.textContent = data.description || 'No description available.';
-        }
-
-        if (linkEl && data.html_url) {
-          linkEl.href = data.html_url;
-        }
-      })
-      .catch((error) => {
-        console.error(`Error fetching repo "${repoName}":`, error);
-
-        // Show error state in card
-        const descriptionEl = card.querySelector('.project-card__description');
-        if (descriptionEl) {
-          descriptionEl.textContent = 'Unable to load project details.';
-          descriptionEl.style.color = '#ef4444';
+// ===================================
+// Website Toggle
+// ===================================
+(function() {
+  const toggleButtons = document.querySelectorAll('.websites-toggle__btn');
+  const grids = document.querySelectorAll('.websites-grid');
+  
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+      
+      // Update button states
+      toggleButtons.forEach(btn => {
+        btn.classList.remove('websites-toggle__btn--active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      button.classList.add('websites-toggle__btn--active');
+      button.setAttribute('aria-selected', 'true');
+      
+      // Show/hide grids with animation
+      grids.forEach(grid => {
+        if (grid.id === `websites-${category}`) {
+          grid.removeAttribute('hidden');
+          grid.offsetHeight;
+          grid.classList.add('websites-grid--active');
+        } else {
+          grid.classList.remove('websites-grid--active');
+          setTimeout(() => {
+            if (!grid.classList.contains('websites-grid--active')) {
+              grid.setAttribute('hidden', '');
+            }
+          }, 300);
         }
       });
+    });
   });
-});
+})();
+
+// ===================================
+// Project Cards GitHub Fetch
+// ===================================
+(function() {
+  const projectCards = document.querySelectorAll('.project-card[data-repo]');
+  
+  projectCards.forEach(card => {
+    const repo = card.getAttribute('data-repo');
+    const titleEl = card.querySelector('.project-card__title');
+    const descEl = card.querySelector('.project-card__description');
+    const linkEl = card.querySelector('.project-card__link');
+    
+    fetch(`https://api.github.com/repos/krishgalani/${repo}`)
+      .then(response => {
+        if (!response.ok) throw new Error('Not found');
+        return response.json();
+      })
+      .then(data => {
+        titleEl.textContent = data.name;
+        descEl.textContent = data.description || 'No description available';
+        linkEl.href = data.html_url;
+      })
+      .catch(error => {
+        console.warn(`Could not fetch repo ${repo}:`, error);
+      });
+  });
+})();
