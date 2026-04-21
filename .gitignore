@@ -25,3 +25,8 @@ pages/gym_template/**
 pages/hair_salon_template/**
 !pages/hair_salon_template/out/
 !pages/hair_salon_template/out/**
+
+# Barefoot Shoe Template (Next.js) - only keep the out folder
+pages/barefoot_shoe_template/**
+!pages/barefoot_shoe_template/out/
+!pages/barefoot_shoe_template/out/**

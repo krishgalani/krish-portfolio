@@ -77,6 +77,21 @@
   const toggleButtons = document.querySelectorAll('.websites-toggle__btn');
   const grids = document.querySelectorAll('.websites-grid');
   
+  // Initialize: activate templates tab by default
+  function initDefaultTab() {
+    const templatesTab = document.querySelector('[data-category="templates"]');
+    if (templatesTab) {
+      templatesTab.click();
+    }
+  }
+  
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDefaultTab);
+  } else {
+    initDefaultTab();
+  }
+  
   toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
