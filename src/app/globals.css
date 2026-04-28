@@ -1,0 +1,227 @@
+/* ===================================
+   CSS Custom Properties (Design Tokens)
+   =================================== */
+:root {
+  /* Colors - Japanese/Anime Sword Shop Palette */
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6560;
+  --color-background: #f5f0e8;
+  --color-surface: #fffdf9;
+  --color-primary: #8b4513;
+  --color-primary-hover: #6b3410;
+  --color-accent: #c9a86c;
+  --color-border: #d4c8b8;
+  --color-shadow: rgba(139, 69, 19, 0.1);
+  
+  /* Typography */
+  --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'Lucida Console', 'Consolas', monospace;
+  --font-family-pixel: 'Dogica Pixel', 'Dogica', monospace;
+  
+  /* Chinese Font Size Scale */
+  --zh-font-scale: 1.5;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(139, 69, 19, 0.08);
+  --shadow-md: 0 4px 12px rgba(139, 69, 19, 0.12);
+  --shadow-lg: 0 8px 24px rgba(139, 69, 19, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  
+  /* Layout */
+  --max-width: 75vw;
+  --content-padding: var(--space-lg);
+}
+
+/* ===================================
+   Font Face Declarations
+   =================================== */
+@font-face {
+  font-family: 'KaiTi';
+  src: url('/resources/kaiti.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'pingfang_jianti';
+  src: url('/resources/pingfang_jianti.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Dogica';
+  src: url('/resources/Dogica.eot');
+  src: 
+    url('/resources/Dogica.eot?#iefix') format('embedded-opentype'),
+    url('/resources/Dogica.woff2') format('woff2'),
+    url('/resources/Dogica.woff') format('woff'),
+    url('/resources/Dogica.ttf') format('truetype'),
+    url('/resources/Dogica.svg#Dogica') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dogica Pixel';
+  src: url('/resources/Dogica_Pixel_Bold.eot');
+  src: 
+    url('/resources/Dogica_Pixel_Bold.eot?#iefix') format('embedded-opentype'),
+    url('/resources/Dogica_Pixel_Bold.woff2') format('woff2'),
+    url('/resources/Dogica_Pixel_Bold.woff') format('woff'),
+    url('/resources/Dogica_Pixel_Bold.ttf') format('truetype'),
+    url('/resources/Dogica_Pixel_Bold.svg#Dogica_Pixel_Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===================================
+   Base Reset & Defaults
+   =================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   Chinese Language Font
+   =================================== */
+:lang(zh) {
+  font-family: 'KaiTi', var(--font-family-mono);
+}
+
+.hero__title:lang(zh) {
+  font-family: 'pingfang_jianti';
+  font-size: calc(clamp(2rem, 8vw, 3.5rem) * var(--zh-font-scale));
+}
+
+.hero__link:lang(zh) {
+  font-size: calc(1.3rem * var(--zh-font-scale));
+}
+
+.section__title:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(1.25rem * var(--zh-font-scale));
+}
+
+.section__text:lang(zh) {
+  font-size: calc(1.1rem * var(--zh-font-scale));
+  line-height: 2;
+}
+
+/* Website cards can use Chinese fonts in Chinese mode */
+.website-card__title:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(1rem * var(--zh-font-scale));
+  white-space: normal;
+  overflow: visible;
+}
+
+.website-card__description:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.9rem * var(--zh-font-scale));
+  -webkit-line-clamp: unset;
+}
+
+.website-card__tag:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.65rem * var(--zh-font-scale));
+}
+
+.websites-toggle__btn:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.9rem * var(--zh-font-scale));
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-mono);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   Background Pattern
+   =================================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(201, 168, 108, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(201, 168, 108, 0.03) 0%, transparent 70%);
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b4513' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+/* ===================================
+   Transitions
+   =================================== */
+.websites-grid {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.websites-grid[hidden] {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --max-width: 90vw;
+    --content-padding: var(--space-md);
+  }
+}

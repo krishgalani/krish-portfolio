@@ -1,50 +1,25 @@
-# Dependencies and common junk
+# Dependencies
 node_modules/
 .DS_Store
 *.log
 .vercel/
 
-# Build artifacts
+# Next.js build artifacts
 .next/
+out/
 build/
 dist/
 
-# Project specific ignores
+# Project specific
 fetch_tinygrad.js
 example.html
 plans/
 .kilocode/
 screenshots/
 
-# Next.js Templates - We keep ONLY the 'out' folder for static hosting in this repo
-# To update these, build them locally and the changes will be reflected in 'out'
+# Template source code (kept for local development but not committed to main repo)
+pages/
 
-# Event Template
-pages/event_template/**
-!pages/event_template/out/
-!pages/event_template/out/**
-
-# Dentist Template
-pages/dentist_template/**
-!pages/dentist_template/out/
-!pages/dentist_template/out/**
-
-# Gym Template
-pages/gym_template/**
-!pages/gym_template/out/
-!pages/gym_template/out/**
-
-# Hair Salon Template
-pages/hair_salon_template/**
-!pages/hair_salon_template/out/
-!pages/hair_salon_template/out/**
-
-# Barefoot Shoe Template
-pages/barefoot_shoe_template/**
-!pages/barefoot_shoe_template/out/
-!pages/barefoot_shoe_template/out/**
-
-# Phone Repair Template
-pages/phone_repair_template/**
-!pages/phone_repair_template/out/
-!pages/phone_repair_template/out/**
+# Ensure public/pages/ (static builds) are tracked
+!public/pages/
+!public/pages/**
