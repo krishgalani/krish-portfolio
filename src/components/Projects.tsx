@@ -1,5 +1,6 @@
 import { INITIAL_PROJECTS } from '@/lib/data';
 import { Project, Dictionary } from '@/types';
+import ProjectCard from './ProjectCard';
 
 async function getGithubProjects(): Promise<Project[]> {
   const projects = await Promise.all(
@@ -34,26 +35,7 @@ export default async function Projects({ dict }: { dict: Dictionary['projects'] 
       <h2 className="section__title">{dict.title}</h2>
       <div className="projects">
         {projects.map((project) => (
-          <article key={project.repo} className="project-card">
-            <div className="project-card__icon-wrapper skeleton rounded-full overflow-hidden mx-auto mb-[var(--space-lg)]">
-              <img 
-                className="project-card__icon" 
-                src={project.icon} 
-                alt={`${project.name} icon`}
-                loading="lazy"
-              />
-            </div>
-            <h3 className="project-card__title">{project.name}</h3>
-            <p className="project-card__description">{project.description}</p>
-            <a 
-              href={project.url} 
-              className="project-card__link" 
-              target="_blank" 
-              rel="noopener"
-            >
-              {dict.viewOnGithub}
-            </a>
-          </article>
+          <ProjectCard key={project.repo} project={project as Project} dict={dict} />
         ))}
       </div>
     </section>
