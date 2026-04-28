@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Website, Locale } from '@/types';
 
 export default function WebsiteCard({
@@ -11,6 +11,13 @@ export default function WebsiteCard({
   lang: Locale;
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
   
   const title = lang === 'en' ? site.titleEn : site.titleZh;
   const tag = lang === 'en' ? site.tagEn : site.tagZh;
@@ -22,12 +29,12 @@ export default function WebsiteCard({
       <a href={site.href} target="_blank" rel="noopener" className="website-card__link">
         <div className={`website-card__preview ${!isLoaded ? 'skeleton' : ''}`}>
           <img
-            className={`website-card__thumbnail ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            ref={imgRef}
+            className={`website-card__thumbnail transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             src={site.thumbnail}
             alt={altText}
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
-            style={{ transition: 'opacity 0.3s ease-in-out' }}
           />
         </div>
         <div className="website-card__content">

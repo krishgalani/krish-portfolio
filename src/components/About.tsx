@@ -1,10 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Dictionary } from '@/types';
 
 export default function About({ dict }: { dict: Dictionary['about'] }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   return (
     <section id="about" className="section">
@@ -15,11 +22,11 @@ export default function About({ dict }: { dict: Dictionary['about'] }) {
         </p>
         <div className={`rounded-md overflow-hidden flex-shrink-0 ${!isLoaded ? 'skeleton' : ''}`}>
           <img 
+            ref={imgRef}
             src="/assets/BU_logo.png" 
             alt="Boston University Logo" 
-            className={`about__logo ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`about__logo transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setIsLoaded(true)}
-            style={{ transition: 'opacity 0.3s ease-in-out' }}
           />
         </div>
       </div>

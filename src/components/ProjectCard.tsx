@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Project, Dictionary } from '@/types';
 
 export default function ProjectCard({ 
@@ -11,17 +11,24 @@ export default function ProjectCard({
   dict: Dictionary['projects'] 
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   return (
     <article className="project-card">
       <div className={`project-card__icon-wrapper rounded-full overflow-hidden mx-auto mb-[var(--space-lg)] ${!isLoaded ? 'skeleton' : ''}`}>
         <img 
-          className={`project-card__icon ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          ref={imgRef}
+          className={`project-card__icon transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           src={project.icon} 
           alt={`${project.name} icon`}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
-          style={{ transition: 'opacity 0.3s ease-in-out' }}
         />
       </div>
       <h3 className="project-card__title">{project.name}</h3>

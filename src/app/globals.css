@@ -102,14 +102,14 @@
    Transitions & Animations
    =================================== */
 @keyframes skeleton-pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 0.3; }
-  100% { opacity: 0.6; }
+  0% { background-color: var(--color-border); }
+  50% { background-color: #cbd5e1; }
+  100% { background-color: var(--color-border); }
 }
 
 .skeleton {
-  background-color: #e2e8f0;
-  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: var(--color-border);
 }
 
 /* ===================================
