@@ -1,21 +1,17 @@
-'use client';
+import { Dictionary } from '@/types';
 
-import { useLanguage } from './LanguageContext';
-
-export default function Contact() {
-  const { t } = useLanguage();
-
+export default function Contact({ dict }: { dict: Dictionary['contact'] }) {
   return (
     <section id="contact" className="section">
-      <h2 className="section__title">{t('contact', '聯絡')}</h2>
+      <h2 className="section__title">{dict.title}</h2>
       <p className="section__text">
-        <strong>{t('Email:', '電郵：')}</strong>{' '}
+        <strong>{dict.email}</strong>{' '}
         <a href="mailto:krishdgala@gmail.com" className="section__link">
           krishdgala@gmail.com
         </a>
       </p>
       <p className="section__text">
-        <strong>{t('LinkedIn:', 'LinkedIn：')}</strong>{' '}
+        <strong>{dict.linkedin}</strong>{' '}
         <a 
           href="https://linkedin.com/in/krishgalani" 
           target="_blank" 

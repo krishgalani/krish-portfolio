@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Krish Galani",
+    "subtitle": "Full-stack Engineer",
+    "about": "about",
+    "projects": "projects",
+    "websites": "websites",
+    "contact": "contact",
+    "cv": "cv"
+  },
+  "about": {
+    "title": "about",
+    "content": "I graduated from Boston University ('24) with a B.A. in Computer Science. I enjoy making websites for small businesses in Hong Kong, I make use modern coding AI assistants with the Next.js framework for fast and flexible deployment. I am capable of integrating third party functionality, including booking, and e-commerce features."
+  },
+  "websites": {
+    "title": "websites",
+    "clientWebsites": "Client Websites",
+    "websiteTemplates": "Website Templates"
+  },
+  "projects": {
+    "title": "projects",
+    "viewOnGithub": "View on GitHub"
+  },
+  "contact": {
+    "title": "contact",
+    "email": "Email:",
+    "linkedin": "LinkedIn:"
+  }
+}

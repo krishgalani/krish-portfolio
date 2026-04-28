@@ -18,8 +18,8 @@ plans/
 screenshots/
 
 # Template source code (kept for local development but not committed to main repo)
-pages/
+template-sources/
 
-# Ensure public/pages/ (static builds) are tracked
-!public/pages/
-!public/pages/**
+# Ensure public/demos/ (static builds) are tracked
+!public/demos/
+!public/demos/**

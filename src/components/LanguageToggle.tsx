@@ -1,17 +1,22 @@
 'use client';
 
-import { useLanguage } from './LanguageContext';
+import { usePathname, useRouter } from 'next/navigation';
+import { Locale } from '@/types';
 
-export default function LanguageToggle() {
-  const { language, toggleLanguage, t } = useLanguage();
+export default function LanguageToggle({ lang }: { lang: Locale }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const toggleLanguage = () => {
+    const segments = pathname.split('/');
+    segments[1] = lang === 'en' ? 'zh' : 'en';
+    const newPathname = segments.join('/');
+    router.push(newPathname);
+  };
 
   return (
-    <button
-      className="lang-toggle"
-      onClick={toggleLanguage}
-      aria-label={t('Switch to Chinese', '切換到英文')}
-    >
-      {language === 'en' ? 'EN/中' : '中/EN'}
+    <button className="language-toggle" onClick={toggleLanguage}>
+      {lang === 'en' ? '中文' : 'EN'}
     </button>
   );
 }

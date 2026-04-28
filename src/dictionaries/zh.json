@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "葛杰斯",
+    "subtitle": "全棧工程師",
+    "about": "關於",
+    "projects": "項目",
+    "websites": "網站",
+    "contact": "聯絡",
+    "cv": "履歷"
+  },
+  "about": {
+    "title": "關於",
+    "content": "我是波士頓大學計算機科學學士畢業生（'24）。我熱衷於為香港小型企業製作網站，運用現代AI 編程助手配合 Next.js 框架，實現快速靈活的部署。我能整合第三方功能，包括預訂系統和電子商務功能。"
+  },
+  "websites": {
+    "title": "網站",
+    "clientWebsites": "客戶網站",
+    "websiteTemplates": "網站模板"
+  },
+  "projects": {
+    "title": "項目",
+    "viewOnGithub": "在 GitHub 上查看"
+  },
+  "contact": {
+    "title": "聯絡",
+    "email": "電郵：",
+    "linkedin": "LinkedIn："
+  }
+}

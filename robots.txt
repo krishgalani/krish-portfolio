@@ -1,10 +1,8 @@
 User-agent: *
-Disallow: /pages/
+Disallow: /demos/
 
 # Allow the main portfolio page
 Allow: /$
 
-# Allow public resources
-Allow: /resources/
-Allow: /styles.css
-Allow: /script.js
+# Allow public assets
+Allow: /assets/
