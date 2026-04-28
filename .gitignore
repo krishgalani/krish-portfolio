@@ -1,32 +1,50 @@
-# Krish's ignores
-node_modules
+# Dependencies and common junk
+node_modules/
+.DS_Store
+*.log
+.vercel/
+
+# Build artifacts
+.next/
+build/
+dist/
+
+# Project specific ignores
 fetch_tinygrad.js
 example.html
-plans
-.kilocode
-screenshots
+plans/
+.kilocode/
+screenshots/
 
-# Event Template (Next.js) - only keep the out folder
+# Next.js Templates - We keep ONLY the 'out' folder for static hosting in this repo
+# To update these, build them locally and the changes will be reflected in 'out'
+
+# Event Template
 pages/event_template/**
 !pages/event_template/out/
 !pages/event_template/out/**
 
-# Dentist Template (Next.js) - only keep the out folder
+# Dentist Template
 pages/dentist_template/**
 !pages/dentist_template/out/
 !pages/dentist_template/out/**
 
-# Gym Template (Next.js) - only keep the out folder
+# Gym Template
 pages/gym_template/**
 !pages/gym_template/out/
 !pages/gym_template/out/**
 
-# Hair Salon Template (Next.js) - only keep the out folder
+# Hair Salon Template
 pages/hair_salon_template/**
 !pages/hair_salon_template/out/
 !pages/hair_salon_template/out/**
 
-# Barefoot Shoe Template (Next.js) - only keep the out folder
+# Barefoot Shoe Template
 pages/barefoot_shoe_template/**
 !pages/barefoot_shoe_template/out/
 !pages/barefoot_shoe_template/out/**
+
+# Phone Repair Template
+pages/phone_repair_template/**
+!pages/phone_repair_template/out/
+!pages/phone_repair_template/out/**
