@@ -15,11 +15,12 @@ export default function WebsiteCard({
   return (
     <article className="website-card">
       <a href={site.href} target="_blank" rel="noopener" className="website-card__link">
-        <div className="website-card__preview">
+        <div className="website-card__preview skeleton">
           <img
             className="website-card__thumbnail"
             src={site.thumbnail}
             alt={altText}
+            loading="lazy"
           />
         </div>
         <div className="website-card__content">

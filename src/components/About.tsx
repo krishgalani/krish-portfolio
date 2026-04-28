@@ -8,11 +8,13 @@ export default function About({ dict }: { dict: Dictionary['about'] }) {
         <p className="section__text">
           {dict.content}
         </p>
-        <img 
-          src="/assets/BU_logo.png" 
-          alt="Boston University Logo" 
-          className="about__logo"
-        />
+        <div className="skeleton rounded-md overflow-hidden flex-shrink-0">
+          <img 
+            src="/assets/BU_logo.png" 
+            alt="Boston University Logo" 
+            className="about__logo"
+          />
+        </div>
       </div>
     </section>
   );

@@ -35,11 +35,14 @@ export default async function Projects({ dict }: { dict: Dictionary['projects'] 
       <div className="projects">
         {projects.map((project) => (
           <article key={project.repo} className="project-card">
-            <img 
-              className="project-card__icon" 
-              src={project.icon} 
-              alt={`${project.name} icon`}
-            />
+            <div className="project-card__icon-wrapper skeleton rounded-full overflow-hidden mx-auto mb-[var(--space-lg)]">
+              <img 
+                className="project-card__icon" 
+                src={project.icon} 
+                alt={`${project.name} icon`}
+                loading="lazy"
+              />
+            </div>
             <h3 className="project-card__title">{project.name}</h3>
             <p className="project-card__description">{project.description}</p>
             <a 
