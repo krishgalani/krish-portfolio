@@ -15,7 +15,7 @@ export const PUBLISHED_WEBSITES = [
 
 export const TEMPLATES = [
   {
-    href: "/demos/event_template/",
+    href: "/demos/event_template/index.html",
     thumbnail: "/assets/websites/templates/event_template_website_frontpage.png",
     tagEn: "Events",
     tagZh: "活動",
@@ -26,7 +26,7 @@ export const TEMPLATES = [
     category: "templates" as const,
   },
   {
-    href: "/demos/dentist_template/",
+    href: "/demos/dentist_template/index.html",
     thumbnail: "/assets/websites/templates/dentist_template_website_frontpage.png",
     tagEn: "Medical",
     tagZh: "醫療",
@@ -37,7 +37,7 @@ export const TEMPLATES = [
     category: "templates" as const,
   },
   {
-    href: "/demos/gym_template/",
+    href: "/demos/gym_template/index.html",
     thumbnail: "/assets/websites/templates/gym_template_website_frontpage.png",
     tagEn: "Fitness",
     tagZh: "健身",
@@ -48,7 +48,7 @@ export const TEMPLATES = [
     category: "templates" as const,
   },
   {
-    href: "/demos/hair_salon_template/",
+    href: "/demos/hair_salon_template/index.html",
     thumbnail: "/assets/websites/templates/hair_salon_template_website_frontpage.png",
     tagEn: "Beauty",
     tagZh: "美容",
@@ -59,7 +59,7 @@ export const TEMPLATES = [
     category: "templates" as const,
   },
   {
-    href: "/demos/barefoot_shoe_template/",
+    href: "/demos/barefoot_shoe_template/index.html",
     thumbnail: "/assets/websites/templates/barefoot_shoe_template_website_frontpage.png",
     tagEn: "Footwear",
     tagZh: "鞋履",
@@ -70,7 +70,7 @@ export const TEMPLATES = [
     category: "templates" as const,
   },
   {
-    href: "/demos/phone_repair_template/",
+    href: "/demos/phone_repair_template/index.html",
     thumbnail: "/assets/websites/templates/phone_repair_template_website_frontpage.png",
     tagEn: "Tech Repair",
     tagZh: "科技維修",
