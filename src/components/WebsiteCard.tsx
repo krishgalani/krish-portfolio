@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Website, Locale } from '@/types';
+import Link from 'next/link';
 
 export default function WebsiteCard({
   site,
@@ -24,9 +25,16 @@ export default function WebsiteCard({
   const description = lang === 'en' ? site.descriptionEn : site.descriptionZh;
   const altText = lang === 'en' ? `${site.titleEn} preview` : `${site.titleZh} 預覽`;
 
+  const isInternal = site.category === 'published' && site.slug;
+  const href = isInternal ? `/${lang}/projects/${site.slug}` : site.href;
+  const target = isInternal ? undefined : "_blank";
+  const rel = isInternal ? undefined : "noopener";
+
+  const CardWrapper = isInternal ? Link : 'a';
+
   return (
     <article className="website-card">
-      <a href={site.href} target="_blank" rel="noopener" className="website-card__link">
+      <CardWrapper href={href} target={target} rel={rel} className="website-card__link">
         <div className={`website-card__preview ${!isLoaded ? 'skeleton' : ''}`}>
           <img
             ref={imgRef}
@@ -49,7 +57,7 @@ export default function WebsiteCard({
             {description}
           </p>
         </div>
-      </a>
+      </CardWrapper>
     </article>
   );
 }

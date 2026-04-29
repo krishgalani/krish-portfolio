@@ -1,5 +1,6 @@
 export interface Website {
   href: string;
+  slug?: string;
   thumbnail: string;
   tagEn: string;
   tagZh: string;
@@ -9,6 +10,24 @@ export interface Website {
   descriptionEn: string;
   descriptionZh: string;
   category: 'published' | 'templates';
+  quoteEn?: string;
+  quoteZh?: string;
+  challengeEn?: string;
+  challengeZh?: string;
+  solutionEn?: string;
+  solutionZh?: string;
+  skillsEn?: string[];
+  skillsZh?: string[];
+  logo?: string;
+  gallery?: {
+    hero: string;
+    top: string;
+    bottomLeft: string;
+    bottomRight: string;
+    mobileLeft: string;
+    mobileRight: string;
+    footer?: string;
+  };
 }
 
 export interface Project {
@@ -48,5 +67,12 @@ export interface Dictionary {
     title: string;
     email: string;
     linkedin: string;
+  };
+  projectDetails: {
+    skills: string;
+    challenge: string;
+    solution: string;
+    visitWebsite: string;
+    backToHome: string;
   };
 }

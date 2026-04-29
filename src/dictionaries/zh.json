@@ -25,5 +25,12 @@
     "title": "聯絡",
     "email": "電郵：",
     "linkedin": "LinkedIn："
+  },
+  "projectDetails": {
+    "skills": "技術",
+    "challenge": "挑戰",
+    "solution": "解決方案",
+    "visitWebsite": "訪問網站",
+    "backToHome": "返回首頁"
   }
 }

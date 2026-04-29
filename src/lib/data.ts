@@ -1,6 +1,7 @@
 export const PUBLISHED_WEBSITES = [
   {
     href: "https://risingelectronics.com",
+    slug: "rising-electronics",
     thumbnail: "/assets/websites/published/risingelectronics_com_frontpage.png",
     tagEn: "Commerce",
     tagZh: "商業",
@@ -10,6 +11,24 @@ export const PUBLISHED_WEBSITES = [
     descriptionEn: "An electronics manufacturer based in Hong Kong.",
     descriptionZh: "一家位於香港的電子產品製造商。",
     category: "published" as const,
+    quoteEn: "Providing affordable, trusted home electronics across Africa, Middle East.",
+    quoteZh: "為非洲和中東地區提供價格合理、值得信賴的家用電子產品。",
+    challengeEn: "Rising Electronics needed a modern digital presence to showcase their manufacturing capabilities and reach global clients while maintaining their heritage in Hong Kong.",
+    challengeZh: "穗升國際需要一個現代化的數字平台，在保持香港傳統的同時，展示其製造能力並觸及全球客戶。",
+    solutionEn: "We developed a clean, professional website that highlights their product categories, manufacturing process, and international quality standards with a focus on ease of navigation.",
+    solutionZh: "我們開發了一個簡潔、專業的網站，重點介紹了他們的產品類別、製造流程和國際質量標準，並注重導航的便捷性。",
+    skillsEn: ["Web Design & Development", "Content Management System", "Responsive Design", "Third Party Integration"],
+    skillsZh: ["網頁設計與開發", "內容管理系統", "響應式設計", "第三方功能整合"],
+    logo: "/assets/websites/published/rising_icon.png",
+    gallery: {
+      hero: "/assets/websites/published/rising_hero.png",
+      top: "/assets/websites/published/rising_product_gallerytop.png",
+      bottomLeft: "/assets/websites/published/rising_gallery_bottomleft.png",
+      bottomRight: "/assets/websites/published/rising_gallery_bottomright.png",
+      mobileLeft: "/assets/websites/published/rising_mobile_left.png",
+      mobileRight: "/assets/websites/published/rising_mobile_right.png",
+      footer: "/assets/websites/published/rising_footer.png"
+    }
   }
 ];
 

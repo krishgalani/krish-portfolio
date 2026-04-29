@@ -269,6 +269,11 @@ body::after {
   padding: 0 var(--content-padding);
 }
 
+.page--full {
+  max-width: 100%;
+  padding: 0;
+}
+
 /* ===================================
    Hero Section
    =================================== */
@@ -703,46 +708,269 @@ body::after {
 }
 
 /* ===================================
+   Case Study Page (Standard & Performant)
+   =================================== */
+.case-study {
+  padding: var(--space-3xl) 0;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.case-study__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: var(--font-family-pixel);
+  font-size: 0.8rem;
+  margin-bottom: var(--space-xl);
+  transition: transform var(--transition-fast);
+}
+
+.case-study__back-link:lang(zh) {
+  font-family: 'KaiTi', serif;
+  font-size: 1.2rem;
+}
+
+.case-study__back-link:hover {
+  transform: translateX(-4px);
+}
+
+.case-study__header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.case-study__title {
+  font-family: var(--font-family-pixel);
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-lg);
+  line-height: 1.2;
+}
+
+.case-study__quote {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-family: var(--font-family-base);
+}
+
+.case-study__hero-container {
+  width: 100%;
+  margin: var(--space-3xl) 0;
+}
+
+.case-study__hero-img-std {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.case-study__grid-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-3xl);
+  margin-top: var(--space-3xl);
+  align-items: start;
+}
+
+.case-study__sidebar-sticky {
+  position: sticky;
+  top: var(--space-xl);
+}
+
+.case-study__section-title {
+  font-family: var(--font-family-pixel);
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-md);
+}
+
+.case-study__section-title:lang(zh) {
+  font-family: 'KaiTi', serif;
+  font-size: 1.5rem;
+  text-transform: none;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list__item {
+  font-size: 0.85rem;
+  font-family: var(--font-family-mono);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.skills-list__item:lang(zh) {
+  font-family: 'KaiTi', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.case-study__gallery-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.gallery-img-fluid {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--color-border);
+}
+
+.gallery-row-std {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.mobile-mockup-wrap {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2xl);
+  padding: var(--space-3xl) 0;
+  background-color: transparent;
+  border-radius: var(--radius-lg);
+}
+
+/* Precise Mobile Frame */
+.mobile-frame-std {
+  width: 260px;
+  aspect-ratio: 9 / 19.5;
+  background-color: #1a1a1a;
+  border-radius: 36px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.mobile-frame-std::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.mobile-frame-std__screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.mobile-frame-std__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-study__footer-img-wrap {
+  margin-top: var(--space-3xl);
+  width: 100%;
+}
+
+.case-study__sidebar-cta {
+  margin-top: var(--space-2xl);
+}
+
+.case-study__sidebar-logo {
+  margin-top: var(--space-2xl);
+  width: 120px;
+}
+
+.sidebar-logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.case-study__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  background-color: transparent;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: var(--font-family-pixel);
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--color-accent);
+  transition: all var(--transition-base);
+}
+
+.case-study__cta-btn:lang(zh) {
+  font-family: 'KaiTi', serif;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.case-study__cta-btn:hover {
+  color: var(--color-primary-hover);
+  border-bottom-color: var(--color-primary);
+}
+
+.cta-arrow {
+  transition: transform var(--transition-base);
+}
+
+.case-study__cta-btn:hover .cta-arrow {
+  transform: translateX(6px);
+}
+
+/* ===================================
    Responsive Adjustments
    =================================== */
-@media (max-width: 768px) {
-  :root {
-    --max-width: 90vw;
-    --content-padding: var(--space-md);
-  }
-  
-  .language-toggle {
-    top: var(--space-md);
-    right: var(--space-md);
-    font-size: 0.8rem;
-    padding: var(--space-xs) var(--space-sm);
-  }
-  
-  .hero__title {
-    font-size: 1.75rem;
-  }
-
-  
-  .hero__link {
-    font-size: 0.9rem;
-    padding: var(--space-xs) var(--space-sm);
-  }
-  
-  .projects {
+@media (max-width: 1024px) {
+  .case-study__grid-layout {
     grid-template-columns: 1fr;
   }
-  
-  .websites-toggle {
+  .case-study__sidebar-sticky {
+    position: static;
+  }
+  .skills-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+  .mobile-mockup-wrap {
     flex-direction: column;
-    width: 100%;
+    align-items: center;
   }
-  
-  .websites-toggle__btn {
-    width: 100%;
-    text-align: center;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --max-width: 95vw;
   }
-  
-  .websites-grid {
+  .gallery-row-std {
     grid-template-columns: 1fr;
   }
 }

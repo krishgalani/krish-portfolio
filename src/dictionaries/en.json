@@ -25,5 +25,12 @@
     "title": "contact",
     "email": "Email:",
     "linkedin": "LinkedIn:"
+  },
+  "projectDetails": {
+    "skills": "Skills",
+    "challenge": "The Challenge",
+    "solution": "The Solution",
+    "visitWebsite": "Visit Website",
+    "backToHome": "Back to Home"
   }
 }
