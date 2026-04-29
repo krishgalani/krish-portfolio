@@ -1,9 +1,10 @@
 'use client';
 
+import { Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Locale } from '@/types';
 
-export default function LanguageToggle({ lang }: { lang: Locale }) {
+function LanguageToggleContent({ lang }: { lang: Locale }) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -27,5 +28,13 @@ export default function LanguageToggle({ lang }: { lang: Locale }) {
     <button className="language-toggle" onClick={toggleLanguage}>
       {lang === 'en' ? '中文' : 'EN'}
     </button>
+  );
+}
+
+export default function LanguageToggle({ lang }: { lang: Locale }) {
+  return (
+    <Suspense fallback={<button className="language-toggle">{lang === 'en' ? '中文' : 'EN'}</button>}>
+      <LanguageToggleContent lang={lang} />
+    </Suspense>
   );
 }
