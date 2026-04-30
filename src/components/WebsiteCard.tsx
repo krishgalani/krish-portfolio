@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import { Website, Locale } from '@/types';
 import Link from 'next/link';
+import SkeletonImage from './SkeletonImage';
 
 export default function WebsiteCard({
   site,
@@ -11,15 +11,6 @@ export default function WebsiteCard({
   site: Website;
   lang: Locale;
 }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    if (imgRef.current?.complete) {
-      setIsLoaded(true);
-    }
-  }, []);
-  
   const title = lang === 'en' ? site.titleEn : site.titleZh;
   const tag = lang === 'en' ? site.tagEn : site.tagZh;
   const description = lang === 'en' ? site.descriptionEn : site.descriptionZh;
@@ -35,16 +26,13 @@ export default function WebsiteCard({
   return (
     <article className="website-card">
       <CardWrapper href={href} target={target} rel={rel} className="website-card__link">
-        <div className={`website-card__preview ${!isLoaded ? 'skeleton' : ''}`}>
-          <img
-            ref={imgRef}
-            className={`website-card__thumbnail transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            src={site.thumbnail}
-            alt={altText}
-            loading="lazy"
-            onLoad={() => setIsLoaded(true)}
-          />
-        </div>
+        <SkeletonImage 
+          src={site.thumbnail}
+          alt={altText}
+          className="website-card__thumbnail"
+          containerClassName="website-card__preview"
+          loading="lazy"
+        />
         <div className="website-card__content">
           <span className="website-card__tag">
             {tag}

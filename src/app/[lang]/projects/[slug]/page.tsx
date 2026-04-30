@@ -5,6 +5,8 @@ import { PUBLISHED_WEBSITES } from '@/lib/data';
 import { getDictionary } from '@/lib/dictionaries';
 import { Locale } from '@/types';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import SkeletonImage from '@/components/SkeletonImage';
+import { preload } from 'react-dom';
 
 interface PageProps {
   params: Promise<{
@@ -46,13 +48,18 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
+  const { gallery } = project;
+
+  // Phase 2: Implement Header Preloads
+  preload(gallery.hero, { as: 'image' });
+  preload(gallery.top, { as: 'image' });
+  if (project.logo) preload(project.logo, { as: 'image' });
+
   const dict = await getDictionary(locale);
   const details = dict.projectDetails;
 
   const title = locale === 'zh' ? project.titleZh : project.titleEn;
   const skills = locale === 'zh' ? project.skillsZh : project.skillsEn;
-  
-  const { gallery } = project;
 
   return (
     <article className="page case-study">
@@ -60,9 +67,12 @@ export default async function ProjectPage({ params }: PageProps) {
         <ArrowLeft size={16} /> {details.backToHome}
       </Link>
 
-      <div className="case-study__hero-container">
-        <img src={gallery.hero} alt={title} className="case-study__hero-img-std" />
-      </div>
+      <SkeletonImage 
+        src={gallery.hero} 
+        alt={title} 
+        className="case-study__hero-img-std" 
+        containerClassName="case-study__hero-container"
+      />
 
       <main className="case-study__grid-layout">
         <aside className="case-study__sidebar">
@@ -90,33 +100,56 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
 
             {project.logo && (
-              <div className="case-study__sidebar-logo">
-                <img src={project.logo} alt={`${title} logo`} className="sidebar-logo-img" />
-              </div>
+              <SkeletonImage 
+                src={project.logo} 
+                alt={`${title} logo`} 
+                className="sidebar-logo-img" 
+                containerClassName="case-study__sidebar-logo"
+              />
             )}
           </div>
         </aside>
 
         <div className="case-study__gallery-flow">
           {/* Top Full Image */}
-          <img src={gallery.top} alt={`${title} showcase top`} className="gallery-img-fluid" />
+          <SkeletonImage 
+            src={gallery.top} 
+            alt={`${title} showcase top`} 
+            className="gallery-img-fluid" 
+          />
 
           {/* Bottom Side-by-Side Images */}
           <div className="gallery-row-std">
-            <img src={gallery.bottomLeft} alt={`${title} detail left`} className="gallery-img-fluid" />
-            <img src={gallery.bottomRight} alt={`${title} detail right`} className="gallery-img-fluid" />
+            <SkeletonImage 
+              src={gallery.bottomLeft} 
+              alt={`${title} detail left`} 
+              className="gallery-img-fluid" 
+            />
+            <SkeletonImage 
+              src={gallery.bottomRight} 
+              alt={`${title} detail right`} 
+              className="gallery-img-fluid" 
+            />
           </div>
 
           {/* Mobile Showcase Side-by-Side in Frames */}
           <div className="mobile-mockup-wrap">
             <div className="mobile-frame-std">
               <div className="mobile-frame-std__screen">
-                <img src={gallery.mobileLeft} alt={`${title} mobile left`} className="mobile-frame-std__img" />
+                <SkeletonImage 
+                  src={gallery.mobileLeft} 
+                  alt={`${title} mobile left`} 
+                  className="mobile-frame-std__img" 
+                />
               </div>
             </div>
             <div className="mobile-frame-std">
               <div className="mobile-frame-std__screen">
-                <img src={gallery.mobileRight} alt={`${title} mobile right`} className="mobile-frame-std__img" />
+                <SkeletonImage 
+                  src={gallery.mobileRight} 
+                  alt={`${title} mobile right`} 
+                  className="mobile-frame-std__img" 
+                />
               </div>
             </div>
           </div>
@@ -124,9 +157,12 @@ export default async function ProjectPage({ params }: PageProps) {
       </main>
 
       {gallery.footer && (
-        <div className="case-study__footer-img-wrap">
-          <img src={gallery.footer} alt={`${title} footer`} className="gallery-img-fluid" />
-        </div>
+        <SkeletonImage 
+          src={gallery.footer} 
+          alt={`${title} footer`} 
+          className="gallery-img-fluid" 
+          containerClassName="case-study__footer-img-wrap"
+        />
       )}
     </article>
   );
