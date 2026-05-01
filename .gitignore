@@ -16,6 +16,7 @@ example.html
 plans/
 .kilocode/
 screenshots/
+tsconfig.tsbuildinfo
 
 # Template source code (kept for local development but not committed to main repo)
 template-sources/
