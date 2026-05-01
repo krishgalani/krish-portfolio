@@ -33,11 +33,11 @@ export const PUBLISHED_WEBSITES: Website[] = [
       stacked: [
         "/assets/websites/published/search.png",
         "/assets/websites/published/new_arrivals.png",
-        "/assets/websites/published/footer.png",
+        "/assets/websites/published/footer.png"
       ],
       mobileLeft: "/assets/websites/published/rising_mobile_left.png",
       mobileRight: "/assets/websites/published/rising_mobile_right.png",
-      footer: "/assets/websites/published/footer.png"
+      // footer: "/assets/websites/published/footer.png"
     }
   }
 ];

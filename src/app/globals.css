@@ -731,7 +731,7 @@ body::after {
   z-index: 1;
   /* --- TWEAK RADII HERE --- */
   --radius-gallery: 25px;
-  --radius-stacked: 0px;
+  --radius-stacked: 20px;
 }
 
 .case-study__back-link {
@@ -858,6 +858,7 @@ body::after {
   position: relative;
   left: 50%;
   right: 50%;
+
   margin-left: -50vw;
   margin-right: -50vw;
   padding: var(--space-3xl) 0;
@@ -872,6 +873,9 @@ body::after {
   width: 100%;
   line-height: 0;
   display: block;
+  margin-bottom:20px;
+  border-radius: var(--radius-stacked); 
+  overflow: hidden;
 }
 
 .case-study__stacked-img-container .gallery-img-fluid {
