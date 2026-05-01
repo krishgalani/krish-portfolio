@@ -1,4 +1,6 @@
-export const PUBLISHED_WEBSITES = [
+import { Website } from '@/types';
+
+export const PUBLISHED_WEBSITES: Website[] = [
   {
     href: "https://risingelectronics.com",
     slug: "rising-electronics",
@@ -35,11 +37,12 @@ export const PUBLISHED_WEBSITES = [
       ],
       mobileLeft: "/assets/websites/published/rising_mobile_left.png",
       mobileRight: "/assets/websites/published/rising_mobile_right.png",
+      footer: "/assets/websites/published/footer.png"
     }
   }
 ];
 
-export const TEMPLATES = [
+export const TEMPLATES: Website[] = [
   {
     href: "/demos/event_template/index.html",
     thumbnail: "/assets/websites/templates/event_template_website_frontpage.png",
