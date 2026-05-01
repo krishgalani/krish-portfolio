@@ -18,14 +18,11 @@ export default function WebsiteCard({
 
   const isInternal = site.category === 'published' && site.slug;
   const href = isInternal ? `/${lang}/projects/${site.slug}` : site.href;
-  const target = isInternal ? undefined : "_blank";
-  const rel = isInternal ? undefined : "noopener";
-
   const CardWrapper = isInternal ? Link : 'a';
 
   return (
     <article className="website-card">
-      <CardWrapper href={href} target={target} rel={rel} className="website-card__link">
+      <CardWrapper href={href} className="website-card__link">
         <SkeletonImage 
           src={site.thumbnail}
           alt={altText}

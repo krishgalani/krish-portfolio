@@ -2,7 +2,7 @@ export const PUBLISHED_WEBSITES = [
   {
     href: "https://risingelectronics.com",
     slug: "rising-electronics",
-    thumbnail: "/assets/websites/published/risingelectronics_com_frontpage.png",
+    thumbnail: "/assets/websites/published/hero.png",
     tagEn: "Commerce",
     tagZh: "商業",
     titleEn: "Rising Electronics",
@@ -20,14 +20,21 @@ export const PUBLISHED_WEBSITES = [
     skillsEn: ["Web Design & Development", "Content Management System", "Responsive Design", "Third Party Integration"],
     skillsZh: ["網頁設計與開發", "內容管理系統", "響應式設計", "第三方功能整合"],
     logo: "/assets/websites/published/rising_icon.png",
+    galleryBg: "transparent",
+    stackedBg: "transparent",
+    mobileBg: "transparent",
     gallery: {
-      hero: "/assets/websites/published/rising_hero.png",
-      top: "/assets/websites/published/rising_product_gallerytop.png",
-      bottomLeft: "/assets/websites/published/rising_gallery_bottomleft.png",
-      bottomRight: "/assets/websites/published/rising_gallery_bottomright.png",
+      hero: "/assets/websites/published/hero.png",
+      top: "/assets/websites/published/collection.png",
+      bottomLeft: "/assets/websites/published/about.png",
+      bottomRight: "/assets/websites/published/contact.png",
+      stacked: [
+        "/assets/websites/published/search.png",
+        "/assets/websites/published/new_arrivals.png",
+        "/assets/websites/published/footer.png",
+      ],
       mobileLeft: "/assets/websites/published/rising_mobile_left.png",
       mobileRight: "/assets/websites/published/rising_mobile_right.png",
-      footer: "/assets/websites/published/rising_footer.png"
     }
   }
 ];

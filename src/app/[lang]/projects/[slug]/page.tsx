@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         </aside>
 
-        <div className="case-study__gallery-flow">
+        <div className="case-study__gallery-flow" style={{ backgroundColor: project.galleryBg }}>
           {/* Top Full Image */}
           <SkeletonImage 
             src={gallery.top} 
@@ -118,7 +118,6 @@ export default async function ProjectPage({ params }: PageProps) {
             className="gallery-img-fluid" 
           />
 
-          {/* Bottom Side-by-Side Images */}
           <div className="gallery-row-std">
             <SkeletonImage 
               src={gallery.bottomLeft} 
@@ -131,30 +130,51 @@ export default async function ProjectPage({ params }: PageProps) {
               className="gallery-img-fluid" 
             />
           </div>
-
-          {/* Mobile Showcase Side-by-Side in Frames */}
-          <div className="mobile-mockup-wrap">
-            <div className="mobile-frame-std">
-              <div className="mobile-frame-std__screen">
-                <SkeletonImage 
-                  src={gallery.mobileLeft} 
-                  alt={`${title} mobile left`} 
-                  className="mobile-frame-std__img" 
-                />
-              </div>
-            </div>
-            <div className="mobile-frame-std">
-              <div className="mobile-frame-std__screen">
-                <SkeletonImage 
-                  src={gallery.mobileRight} 
-                  alt={`${title} mobile right`} 
-                  className="mobile-frame-std__img" 
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </main>
+
+      {/* Stacked Full-Width Screenshots Section - Moved outside grid for centering */}
+      {gallery.stacked && gallery.stacked.length > 0 && (
+        <div className="case-study__stacked-gallery" style={{ backgroundColor: project.stackedBg }}>
+          <div className="case-study__stacked-content">
+            {gallery.stacked.map((img, index) => (
+              <SkeletonImage 
+                key={`${img}-${index}`}
+                src={img} 
+                alt={`${title} screenshot ${index + 1}`} 
+                className="gallery-img-fluid"
+                containerClassName="case-study__stacked-img-container"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Showcase Section - Moved outside grid for centering */}
+      <div className="portfolio mobile" style={{ backgroundColor: project.mobileBg }}>
+        <ul className="img-project">
+          <li>
+            <div className="mobile-frame-std__screen">
+              <SkeletonImage 
+                src={gallery.mobileLeft} 
+                alt={`${title} mobile left`} 
+                className="mobile-frame-std__img" 
+                containerClassName="w-full h-full"
+              />
+            </div>
+          </li>
+          <li>
+            <div className="mobile-frame-std__screen">
+              <SkeletonImage 
+                src={gallery.mobileRight} 
+                alt={`${title} mobile right`} 
+                className="mobile-frame-std__img" 
+                containerClassName="w-full h-full"
+              />
+            </div>
+          </li>
+        </ul>
+      </div>
 
       {gallery.footer && (
         <SkeletonImage 

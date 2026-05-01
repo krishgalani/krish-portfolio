@@ -19,11 +19,15 @@ export interface Website {
   skillsEn?: string[];
   skillsZh?: string[];
   logo?: string;
+  galleryBg?: string;
+  stackedBg?: string;
+  mobileBg?: string;
   gallery?: {
     hero: string;
     top: string;
     bottomLeft: string;
     bottomRight: string;
+    stacked?: string[];
     mobileLeft: string;
     mobileRight: string;
     footer?: string;

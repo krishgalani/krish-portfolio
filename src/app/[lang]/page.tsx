@@ -24,12 +24,14 @@ export default async function Home({
   TEMPLATES.slice(0, 2).forEach(site => preload(site.thumbnail, { as: 'image' }));
 
   return (
-    <main className="page">
+    <main>
       <Hero dict={dict.hero} />
-      <About dict={dict.about} />
-      <Websites dict={dict.websites} lang={locale} />
-      <Projects dict={dict.projects} />
-      <Contact dict={dict.contact} />
+      <div className="page">
+        <About dict={dict.about} />
+        <Websites dict={dict.websites} lang={locale} />
+        <Projects dict={dict.projects} />
+        <Contact dict={dict.contact} />
+      </div>
     </main>
   );
 }

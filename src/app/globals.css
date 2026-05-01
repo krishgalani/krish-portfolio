@@ -227,7 +227,7 @@ body::after {
   right: 0;
   bottom: 0;
   pointer-events: none;
-  opacity: 0.02;
+  opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b4513' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: 0;
 }
@@ -292,52 +292,13 @@ body::after {
   text-align: center;
   padding: var(--space-2xl) 0;
   position: relative;
+  overflow: hidden;
 }
 
-/* ===================================
-   Three Body Problem Animation
-   =================================== */
-.three-body-system {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero__content {
   margin-bottom: var(--space-xl);
   width: 100%;
 }
-
-.sun {
-  position: absolute;
-  width: clamp(14px, 4vw, 20px);
-  height: clamp(14px, 4vw, 20px);
-  border-radius: 50%;
-  background: var(--color-accent);
-  pointer-events: none;
-  z-index: 0;
-  box-shadow: 
-    0 0 15px var(--color-accent),
-    0 0 30px var(--color-accent);
-  opacity: 0.9;
-  filter: blur(0.4px);
-}
-
-.sun-1 {
-  background: var(--color-accent);
-}
-
-.sun-2 {
-  background: #ffcc00;
-  width: clamp(10px, 3vw, 14px);
-  height: clamp(10px, 3vw, 14px);
-}
-
-.sun-3 {
-  background: var(--color-primary);
-  width: clamp(18px, 5vw, 26px);
-  height: clamp(18px, 5vw, 26px);
-}
-
-/* ... existing keyframes removed if they were there ... */
 
 /* Decorative top border */
 .hero::before {
@@ -355,7 +316,7 @@ body::after {
   font-family: var(--font-family-pixel);
   font-size: clamp(1.8rem, 10vw, 4rem);
   font-weight: normal;
-  margin: 0;
+  margin: 0 0 var(--space-xl);
   letter-spacing: 0.05em;
   color: var(--color-primary);
   position: relative;
@@ -368,10 +329,10 @@ body::after {
 .hero__title::after {
   content: '';
   position: absolute;
-  bottom: -0.5rem;
+  bottom: -1.25rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 80px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
@@ -768,6 +729,9 @@ body::after {
   background-color: transparent;
   position: relative;
   z-index: 1;
+  /* --- TWEAK RADII HERE --- */
+  --radius-gallery: 25px;
+  --radius-stacked: 0px;
 }
 
 .case-study__back-link {
@@ -823,7 +787,7 @@ body::after {
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid var(--color-border);
+  border-radius: 25px;
   box-shadow: var(--shadow-md);
 }
 
@@ -883,13 +847,42 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
+  width: 100%;
+}
+
+.case-study__stacked-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--space-3xl) 0;
+}
+
+.case-study__stacked-content {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.case-study__stacked-img-container {
+  width: 100%;
+  line-height: 0;
+  display: block;
+}
+
+.case-study__stacked-img-container .gallery-img-fluid {
+  border-radius: var(--radius-stacked);
 }
 
 .gallery-img-fluid {
   width: 100%;
   height: auto;
+  border-radius: var(--radius-gallery);
   display: block;
-  border: 1px solid var(--color-border);
 }
 
 .gallery-row-std {
@@ -898,50 +891,90 @@ body::after {
   gap: var(--space-lg);
 }
 
-.mobile-mockup-wrap {
+.portfolio.mobile {
+  /* --- TWEAK THESE VARIABLES --- */
+  --phone-scale: 0.7;            /* Overall size of the hardware mockup */
+  --screen-scale: 1.105;           /* Extra scale for the screenshot area */
+  
+  --phone-w: 466px;             /* Original PNG frame width */
+  --phone-h: 898px;             /* Original PNG frame height */
+  --screen-t: 5px;             /* Offset from top of phone to screen */
+  --screen-w: 390px;            /* Actual screenshot width */
+  --screen-h: 810px;            /* Actual screenshot height */
+  --screen-r: 70px;             /* Corner radius */
+  /* ---------------------------- */
+
   display: flex;
   justify-content: center;
-  gap: var(--space-2xl);
-  padding: var(--space-3xl) 0;
-  background-color: transparent;
-  border-radius: var(--radius-lg);
-}
-
-/* Precise Mobile Frame */
-.mobile-frame-std {
-  width: 260px;
-  aspect-ratio: 9 / 19.5;
-  background-color: #1a1a1a;
-  border-radius: 36px;
-  padding: 10px;
+  align-items: center;
+  width: 100vw;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: transparent;
+  padding: var(--space-3xl) 0;
 }
 
-.mobile-frame-std::after {
+.img-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Precise Mobile Frame with Asset */
+.img-project li {
+  position: relative;
+  width: calc(var(--phone-w) * var(--phone-scale));
+  height: calc(var(--phone-h) * var(--phone-scale));
+  flex-shrink: 0;
+}
+
+.img-project li::before {
   content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url(/assets/iphone.png);
+  background-repeat: no-repeat;
+  background-size: calc(1200px * var(--phone-scale));
+  background-position: calc(-367px * var(--phone-scale)) calc(-151px * var(--phone-scale));
   position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 20px;
-  background-color: #000;
-  border-radius: 10px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .mobile-frame-std__screen {
-  width: 100%;
-  height: 100%;
-  border-radius: 28px;
+  position: absolute;
+  /* Combined scaling for the screenshot */
+  --final-scale: calc(var(--phone-scale) * var(--screen-scale));
+  
+  top: calc(var(--screen-t) * var(--phone-scale));
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: calc(var(--screen-w) * var(--final-scale));
+  height: calc(var(--screen-h) * var(--final-scale));
+  border-radius: calc(var(--screen-r) * var(--final-scale));
   overflow: hidden;
-  background-color: #000;
+  z-index: 0; /* Screenshot behind frame */
+  display: block;
+  background-color: #ffffff !important;
 }
 
 .mobile-frame-std__img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
+  background-color: #ffffff;
 }
 
 .case-study__footer-img-wrap {
@@ -1048,10 +1081,21 @@ body::after {
     gap: var(--space-md);
   }
 
-  .mobile-mockup-wrap {
+  .img-project {
     flex-direction: column;
     align-items: center;
     padding: var(--space-xl) 0;
+    gap: var(--space-xl);
+  }
+
+  .img-project li {
+    width: 260px;
+    height: 525px;
+  }
+
+  .img-project li::before {
+    width: 260px;
+    height: 525px;
   }
 
   .skills-list {
@@ -1091,10 +1135,5 @@ body::after {
 
   .about__logo {
     width: 8rem;
-  }
-
-  .mobile-frame-std {
-    width: 100%;
-    max-width: 260px;
   }
 }
