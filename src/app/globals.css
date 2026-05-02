@@ -1085,21 +1085,28 @@ body::after {
     gap: var(--space-md);
   }
 
+  .portfolio.mobile {
+    --phone-scale: 0.55;
+    padding: var(--space-xl) 0;
+  }
+
   .img-project {
     flex-direction: column;
     align-items: center;
+    gap: var(--space-xl);
+    padding: 0;
+  }
+
+  .case-study__stacked-gallery {
     padding: var(--space-xl) 0;
+  }
+
+  .case-study__stacked-content {
     gap: var(--space-xl);
   }
 
-  .img-project li {
-    width: 260px;
-    height: 525px;
-  }
-
-  .img-project li::before {
-    width: 260px;
-    height: 525px;
+  .case-study__footer-img-wrap {
+    margin-top: var(--space-xl);
   }
 
   .skills-list {
@@ -1139,5 +1146,9 @@ body::after {
 
   .about__logo {
     width: 8rem;
+  }
+
+  .portfolio.mobile {
+    --phone-scale: 0.45;
   }
 }
