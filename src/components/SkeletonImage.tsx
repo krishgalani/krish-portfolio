@@ -30,6 +30,7 @@ export default function SkeletonImage({
         alt={alt}
         className={`${className || ''} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
         {...props}
       />
     </div>

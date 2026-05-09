@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: PageProps) {
         src={gallery.hero} 
         alt={title} 
         className="case-study__hero-img-std" 
-        containerClassName="case-study__hero-container"
+        containerClassName="case-study__hero-container aspect-video"
       />
 
       <main className="case-study__grid-layout">
@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 src={project.logo} 
                 alt={`${title} logo`} 
                 className="sidebar-logo-img" 
-                containerClassName="case-study__sidebar-logo"
+                containerClassName="case-study__sidebar-logo min-h-[50px]"
               />
             )}
           </div>
@@ -116,6 +116,7 @@ export default async function ProjectPage({ params }: PageProps) {
             src={gallery.top} 
             alt={`${title} showcase top`} 
             className="gallery-img-fluid" 
+            containerClassName="aspect-video"
           />
 
           <div className="gallery-row-std">
@@ -123,11 +124,13 @@ export default async function ProjectPage({ params }: PageProps) {
               src={gallery.bottomLeft} 
               alt={`${title} detail left`} 
               className="gallery-img-fluid" 
+              containerClassName="aspect-video"
             />
             <SkeletonImage 
               src={gallery.bottomRight} 
               alt={`${title} detail right`} 
               className="gallery-img-fluid" 
+              containerClassName="aspect-video"
             />
           </div>
         </div>
@@ -143,7 +146,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 src={img} 
                 alt={`${title} screenshot ${index + 1}`} 
                 className="gallery-img-fluid"
-                containerClassName="case-study__stacked-img-container"
+                containerClassName="case-study__stacked-img-container aspect-video"
               />
             ))}
           </div>
@@ -159,7 +162,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 src={gallery.mobileLeft} 
                 alt={`${title} mobile left`} 
                 className="mobile-frame-std__img" 
-                containerClassName="w-full h-full"
+                containerClassName="w-full h-full aspect-[390/810]"
               />
             </div>
           </li>
@@ -169,7 +172,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 src={gallery.mobileRight} 
                 alt={`${title} mobile right`} 
                 className="mobile-frame-std__img" 
-                containerClassName="w-full h-full"
+                containerClassName="w-full h-full aspect-[390/810]"
               />
             </div>
           </li>
@@ -181,7 +184,7 @@ export default async function ProjectPage({ params }: PageProps) {
           src={gallery.footer} 
           alt={`${title} footer`} 
           className="gallery-img-fluid" 
-          containerClassName="case-study__footer-img-wrap"
+          containerClassName="case-study__footer-img-wrap aspect-video"
         />
       )}
     </article>

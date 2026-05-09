@@ -15,7 +15,7 @@ export default function About({ dict }: { dict: Dictionary['about'] }) {
           src="/assets/BU_logo.png" 
           alt="Boston University Logo" 
           className="about__logo"
-          containerClassName="rounded-md overflow-hidden flex-shrink-0"
+          containerClassName="rounded-md overflow-hidden flex-shrink-0 min-w-[10rem] min-h-[6rem]"
         />
       </div>
     </section>
