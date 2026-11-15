@@ -29,7 +29,7 @@ export default async function Home({
       <div className="page">
         <About dict={dict.about} />
         <Websites dict={dict.websites} lang={locale} />
-        <Projects dict={dict.projects} />
+        <Projects dict={dict.projects} lang={locale} />
         <Contact dict={dict.contact} />
       </div>
     </main>

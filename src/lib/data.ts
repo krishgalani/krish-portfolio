@@ -1,4 +1,4 @@
-import { Website } from '@/types';
+import { Website, Project } from '@/types';
 
 export const PUBLISHED_WEBSITES: Website[] = [
   {
@@ -111,26 +111,29 @@ export const TEMPLATES: Website[] = [
   }
 ];
 
-export const INITIAL_PROJECTS = [
+export const INITIAL_PROJECTS: Project[] = [
   {
+    id: 'jobsdb-scraper',
     repo: 'jobsdb-scraper',
     icon: 'https://hk.jobsdb.com/static/shared-web/favicon-4e1897dfd0901e8a3bf7e604d3a90636.ico',
     name: 'JobsDB Scraper',
+    nameZh: 'JobsDB 求職爬蟲',
     description: 'A tool to scrape job listings from JobsDB.',
+    descriptionZh: '一個從 JobsDB 抓取職位空缺的工具。',
     url: '#',
+    linkLabelEn: 'View on GitHub',
+    linkLabelZh: '在 GitHub 上查看',
   },
   {
-    repo: 'whatstheweatherlike',
-    icon: 'https://ssl.gstatic.com/onebox/weather/64/sunny.png',
-    name: "What's the weather like",
-    description: 'A simple weather application.',
-    url: '#',
-  },
-  {
-    repo: 'chatroom',
-    icon: '/assets/live-chat.png',
-    name: 'Chatroom',
-    description: 'A real-time chat application.',
-    url: '#',
-  },
+    id: 'scgpt-from-scratch',
+    repo: undefined,
+    icon: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail',
+    name: 'scGPT from scratch',
+    nameZh: '從零實現 scGPT',
+    description: 'Published a video on YouTube breaking down scGPT (Cui et al. 2024): a novel foundation model developed for single-cell multi-omics using generative AI.',
+    descriptionZh: '在 YouTube 上發布影片，深入解析 scGPT（Cui 等，2024）：一個運用生成式 AI、為單細胞多組學開發的新型基礎模型。',
+    url: 'https://youtu.be/e19x3AuKgdc',
+    linkLabelEn: 'View on YouTube',
+    linkLabelZh: '在 YouTube 上觀看',
+  }
 ];

@@ -5,7 +5,7 @@ import { Locale } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Krish Galani',
-  description: 'Full-stack Engineer Portfolio',
+  description: 'Portfolio',
 };
 
 export async function generateStaticParams() {

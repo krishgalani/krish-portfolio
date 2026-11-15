@@ -1,10 +1,12 @@
 import { INITIAL_PROJECTS } from '@/lib/data';
-import { Project, Dictionary } from '@/types';
+import { Project, Dictionary, Locale } from '@/types';
 import ProjectCard from './ProjectCard';
 
 async function getGithubProjects(): Promise<Project[]> {
   const projects = await Promise.all(
     INITIAL_PROJECTS.map(async (project) => {
+      if (!project.repo) return project;
+
       try {
         const res = await fetch(`https://api.github.com/repos/krishgalani/${project.repo}`, {
           next: { revalidate: 3600 }, // Cache for 1 hour
@@ -27,7 +29,7 @@ async function getGithubProjects(): Promise<Project[]> {
   return projects;
 }
 
-export default async function Projects({ dict }: { dict: Dictionary['projects'] }) {
+export default async function Projects({ dict, lang }: { dict: Dictionary['projects']; lang: Locale }) {
   const projects = await getGithubProjects();
 
   return (
@@ -35,7 +37,7 @@ export default async function Projects({ dict }: { dict: Dictionary['projects'] 
       <h2 className="section__title">{dict.title}</h2>
       <div className="projects">
         {projects.map((project) => (
-          <ProjectCard key={project.repo} project={project as Project} dict={dict} />
+          <ProjectCard key={project.id} project={project} dict={dict} lang={lang} />
         ))}
       </div>
     </section>

@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Krish Galani",
-    "subtitle": "Full-stack Engineer",
+    "subtitle": "Data Engineer",
     "about": "about",
     "projects": "projects",
     "websites": "websites",
@@ -10,7 +10,7 @@
   },
   "about": {
     "title": "about",
-    "content": "I graduated from Boston University ('24) with a B.A. in Computer Science. I enjoy making websites for small businesses in Hong Kong, I make use modern coding AI assistants with the Next.js framework for fast and flexible deployment. I am capable of integrating third party functionality, including booking, and e-commerce features."
+    "content": "I graduated from Boston University ('24) with a B.A. in Computer Science. I have general experience across the stack, but more so in the Backend (server-side). I also have solid work experience in Data Engineering. I enjoy reading about applied ML in biology in my spare time. I make use of modern coding AI assistants for fast and flexible deployment."
   },
   "websites": {
     "title": "websites",

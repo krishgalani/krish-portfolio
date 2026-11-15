@@ -151,11 +151,27 @@ html {
   line-height: 2;
 }
 
-/* Project cards always use English fonts */
+/* Project cards follow the page language */
 .project-card,
 .project-card__title,
 .project-card__description {
   font-family: var(--font-family-base);
+}
+
+.project-card__title:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(1.15rem * var(--zh-font-scale));
+}
+
+.project-card__description:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.875rem * var(--zh-font-scale));
+  line-height: 1.8;
+}
+
+.project-card__link:lang(zh) {
+  font-family: 'KaiTi';
+  font-size: calc(0.875rem * var(--zh-font-scale));
 }
 
 /* Website cards can use Chinese fonts in Chinese mode */

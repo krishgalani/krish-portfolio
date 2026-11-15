@@ -35,11 +35,16 @@ export interface Website {
 }
 
 export interface Project {
-  repo: string;
+  id: string;
+  repo?: string;
   icon: string;
   name: string;
+  nameZh?: string;
   description: string;
+  descriptionZh?: string;
   url: string;
+  linkLabelEn?: string;
+  linkLabelZh?: string;
 }
 
 export type Locale = 'en' | 'zh';
