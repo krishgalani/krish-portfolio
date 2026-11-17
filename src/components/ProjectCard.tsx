@@ -24,7 +24,7 @@ export default function ProjectCard({
         src={project.icon} 
         alt={`${name} icon`}
         className="project-card__icon"
-        containerClassName="project-card__icon-wrapper rounded-full overflow-hidden mx-auto mb-[var(--space-lg)]"
+        containerClassName="project-card__icon-wrapper rounded-full overflow-hidden"
         loading="lazy"
       />
       <h3 className="project-card__title">{name}</h3>
