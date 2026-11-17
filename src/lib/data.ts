@@ -118,7 +118,7 @@ export const INITIAL_PROJECTS: Project[] = [
     icon: '/assets/projects/hku-jobs-scraper.png',
     name: 'HKU Jobs Scraper',
     nameZh: 'HKU 職位爬蟲',
-    description: 'LLM-powered personal web scraper for the HKU jobs portal built with the Crawl4AI library in Python. Lightweight, and respects HKUs rate limits.',
+    description: 'LLM-powered personal web scraper for the HKU jobs portal built with the Crawl4AI library in Python. Lightweight, and respects HKUs server rate limits.',
     descriptionZh: '使用 Python 的 Crawl4AI 套件，為 HKU 職位網站建立了一個輕量、由 LLM 驅動的個人網頁爬蟲。',
     url: 'https://github.com/krishgalani/HKU-Job-Scraper',
     linkLabelEn: 'View on GitHub',
