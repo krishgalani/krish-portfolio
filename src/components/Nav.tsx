@@ -16,16 +16,6 @@ export default function Nav({ dict }: { dict: Dictionary['hero'] }) {
         <li className="hero__item">
           <a href="#contact" className="hero__link">{dict.contact}</a>
         </li>
-        <li className="hero__item">
-          <a 
-            href="/assets/Krish_Galani___CV.pdf" 
-            className="hero__link" 
-            target="_blank" 
-            rel="noopener"
-          >
-            {dict.cv}
-          </a>
-        </li>
       </ul>
     </nav>
   );

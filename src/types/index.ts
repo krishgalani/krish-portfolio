@@ -57,7 +57,6 @@ export interface Dictionary {
     projects: string;
     websites: string;
     contact: string;
-    cv: string;
   };
   about: {
     title: string;
